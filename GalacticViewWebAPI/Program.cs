@@ -10,6 +10,7 @@ services.AddAuthorization();
 services.ConfigureCors();
 services.ConfigureIISIntegration();
 services.ConfigureLoggerService();
+services.ConfigureSqlContext(builder.Configuration);
 
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 // Add services to the container.
