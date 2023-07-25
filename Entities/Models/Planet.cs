@@ -18,7 +18,7 @@ namespace Entities.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Distance from the sun is a required field.")]
-        public int DistanceFromTheSun { get; set; }
+        public double DistanceFromTheSun { get; set; }
 
         public string? PlanetInfo { get; set; }
 

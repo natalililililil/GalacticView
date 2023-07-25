@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GalacticViewWebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230721095220_DatabaseCreation")]
+    [Migration("20230724125616_DatabaseCreation")]
     partial class DatabaseCreation
     {
         /// <inheritdoc />
@@ -32,8 +32,8 @@ namespace GalacticViewWebAPI.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("PlanetId");
 
-                    b.Property<int>("DistanceFromTheSun")
-                        .HasColumnType("int");
+                    b.Property<double>("DistanceFromTheSun")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -55,8 +55,8 @@ namespace GalacticViewWebAPI.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("SatelliteId");
 
-                    b.Property<int>("DistanceFromThePlanet")
-                        .HasColumnType("int");
+                    b.Property<double>("DistanceFromThePlanet")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()

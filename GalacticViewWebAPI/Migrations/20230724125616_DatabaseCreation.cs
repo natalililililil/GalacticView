@@ -17,7 +17,7 @@ namespace GalacticViewWebAPI.Migrations
                 {
                     PlanetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    DistanceFromTheSun = table.Column<int>(type: "int", nullable: false),
+                    DistanceFromTheSun = table.Column<double>(type: "float", nullable: false),
                     PlanetInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -31,7 +31,7 @@ namespace GalacticViewWebAPI.Migrations
                 {
                     SatelliteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    DistanceFromThePlanet = table.Column<int>(type: "int", nullable: false),
+                    DistanceFromThePlanet = table.Column<double>(type: "float", nullable: false),
                     SatelliteInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PlanetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
