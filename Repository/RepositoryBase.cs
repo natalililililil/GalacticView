@@ -18,6 +18,7 @@ namespace Repository
             RepositoryContext = repositoryContext;
         }
 
+        //AsNoTracking() - retrieve entities from the database as read-only
         public IQueryable<T> FindAll(bool trackChanges) =>
             !trackChanges ? RepositoryContext.Set<T>().AsNoTracking() : RepositoryContext.Set<T>();
 

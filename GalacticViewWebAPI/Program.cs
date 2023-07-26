@@ -11,6 +11,7 @@ services.ConfigureCors();
 services.ConfigureIISIntegration();
 services.ConfigureLoggerService();
 services.ConfigureSqlContext(builder.Configuration);
+services.ConfigureRepositoryManager();
 
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 // Add services to the container.
@@ -35,13 +36,20 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.UseAuthorization();
 
 //link: https://localhost:7128/weatherforecast
-app.MapGet("/weatherforecast", ((ILoggerManager logger) =>
+//app.MapGet("/weatherforecast", ((ILoggerManager logger) =>
+//{
+//    ILoggerManager _logger = logger;
+//    _logger.LogInfo("Here is info message from our values controller.");
+//    _logger.LogDebug("Here is debug message from our values controller.");
+//    _logger.LogWarn("Here is warn message from our values controller.");
+//    _logger.LogError("Here is an error message from our values controller.");
+//    return new string[] { "value1", "value2" };
+//}));
+
+app.MapGet("/weatherforecast", ((IRepositoryManager manager) =>
 {
-    ILoggerManager _logger = logger;
-    _logger.LogInfo("Here is info message from our values controller.");
-    _logger.LogDebug("Here is debug message from our values controller.");
-    _logger.LogWarn("Here is warn message from our values controller.");
-    _logger.LogError("Here is an error message from our values controller.");
+    IRepositoryManager _manager = manager;
+    //any method from IPlanetRepository or ISatelliteRepository
     return new string[] { "value1", "value2" };
 }));
 
