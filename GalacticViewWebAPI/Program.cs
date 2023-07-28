@@ -13,6 +13,8 @@ services.ConfigureLoggerService();
 services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
 
+services.AddControllers();
+
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 // Add services to the container.
 
@@ -22,19 +24,22 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-if (!app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment())
+    app.UseDeveloperExceptionPage();
+else
     app.UseHsts();
-}
 
 app.UseStaticFiles();
-app.UseCors("CorsPolicy");
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
+
+app.UseCors("CorsPolicy");
+
 app.UseAuthorization();
 
+app.MapControllers();
 //link: https://localhost:7128/weatherforecast
 //app.MapGet("/weatherforecast", ((ILoggerManager logger) =>
 //{
