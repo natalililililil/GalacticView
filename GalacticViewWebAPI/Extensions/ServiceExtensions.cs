@@ -1,8 +1,9 @@
 ﻿using Contracts;
-using Entities;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Service;
+using Service.Contracts;
 
 namespace GalacticViewWebAPI.Extensions
 {
@@ -33,5 +34,8 @@ namespace GalacticViewWebAPI.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
+        public static void ConfigureServiceManager(this IServiceCollection services) =>
+            services.AddScoped<IServiceManager, ServiceManager>();
     }
 }

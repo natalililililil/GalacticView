@@ -11,33 +11,20 @@ namespace Repository
     public class RepositoryManager : IRepositoryManager
     {
         private readonly RepositoryContext _repositoryContext;
-        private IPlanetRepository? _planetRepository;
-        private ISatelliteRepository? _satelliteRepository;
+        private readonly Lazy<IPlanetRepository> _planetRepository;
+        private readonly Lazy<ISatelliteRepository> _satelliteRepository;
         
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
+            _planetRepository = new Lazy<IPlanetRepository>(() => new 
+            PlanetRepository(repositoryContext));
+            _satelliteRepository = new Lazy<ISatelliteRepository>(() => new 
+            SatelliteRepository(repositoryContext));
         }
-        public IPlanetRepository Planet
-        {
-            get 
-            {
-                if (_planetRepository == null)
-                    _planetRepository = new PlanetRepository(_repositoryContext);
-                return _planetRepository; 
-            }
-        }
+        public IPlanetRepository Planet => _planetRepository.Value;
 
-        public ISatelliteRepository Satellite
-        {
-            get
-            {
-                if (_satelliteRepository == null)
-                    _satelliteRepository = new SatelliteRepository(_repositoryContext);
-
-                return _satelliteRepository;
-            }
-        }
+        public ISatelliteRepository Satellite => _satelliteRepository.Value;
 
         public void Save() => _repositoryContext.SaveChanges();
     }

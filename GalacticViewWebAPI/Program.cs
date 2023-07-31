@@ -12,6 +12,7 @@ services.ConfigureIISIntegration();
 services.ConfigureLoggerService();
 services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
+services.ConfigureServiceManager();
 
 services.AddControllers();
 

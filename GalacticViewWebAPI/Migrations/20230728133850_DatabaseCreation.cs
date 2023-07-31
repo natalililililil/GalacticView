@@ -8,11 +8,46 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GalacticViewWebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialData : Migration
+    public partial class DatabaseCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Planets",
+                columns: table => new
+                {
+                    PlanetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    DistanceFromTheSun = table.Column<double>(type: "float", nullable: false),
+                    PlanetInfo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Planets", x => x.PlanetId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Satellites",
+                columns: table => new
+                {
+                    SatelliteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    DistanceFromThePlanet = table.Column<double>(type: "float", nullable: false),
+                    SatelliteInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PlanetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Satellites", x => x.SatelliteId);
+                    table.ForeignKey(
+                        name: "FK_Satellites_Planets_PlanetId",
+                        column: x => x.PlanetId,
+                        principalTable: "Planets",
+                        principalColumn: "PlanetId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Planets",
                 columns: new[] { "PlanetId", "DistanceFromTheSun", "Name", "PlanetInfo" },
@@ -31,35 +66,21 @@ namespace GalacticViewWebAPI.Migrations
                     { new Guid("80abbca8-664d-4b20-b5de-024705497d4a"), 1.2, "Титан", new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "Титан - крупнейший спутник Сатурна, второй по величине спутник в Солнечной системе (после спутника Юпитера Ганимеда), является единственным, кроме Земли, телом в Солнечной системе, для которого доказано стабильное существование жидкости на поверхности, и единственным спутником планеты, обладающим плотной атмосферой." },
                     { new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"), 1.0700000000000001, "Ганимед", new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), "Ганимед - самый большой спутник Юпитера и всей солнечной системы, имеющий размер планеты. Его диаметр составляет 5268 км. Он получил свое название по имени сына троянского царя и нимфы Каллирои." }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Satellites_PlanetId",
+                table: "Satellites",
+                column: "PlanetId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Satellites",
-                keyColumn: "SatelliteId",
-                keyValue: new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"));
+            migrationBuilder.DropTable(
+                name: "Satellites");
 
-            migrationBuilder.DeleteData(
-                table: "Satellites",
-                keyColumn: "SatelliteId",
-                keyValue: new Guid("80abbca8-664d-4b20-b5de-024705497d4a"));
-
-            migrationBuilder.DeleteData(
-                table: "Satellites",
-                keyColumn: "SatelliteId",
-                keyValue: new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"));
-
-            migrationBuilder.DeleteData(
-                table: "Planets",
-                keyColumn: "PlanetId",
-                keyValue: new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"));
-
-            migrationBuilder.DeleteData(
-                table: "Planets",
-                keyColumn: "PlanetId",
-                keyValue: new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"));
+            migrationBuilder.DropTable(
+                name: "Planets");
         }
     }
 }

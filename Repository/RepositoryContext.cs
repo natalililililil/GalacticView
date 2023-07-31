@@ -7,20 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Repository
 {
     public class RepositoryContext : DbContext
     {
         public RepositoryContext(DbContextOptions options)
         : base(options)
         {
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlanetConfiguration());
             modelBuilder.ApplyConfiguration(new SatelliteConfiguration());
         }
-        public DbSet<Planet> Planets { get; set; }
-        public DbSet<Satellite> Satellites { get; set; }
+        public DbSet<Planet>? Planets { get; set; }
+        public DbSet<Satellite>? Satellites { get; set; }
     }
 }

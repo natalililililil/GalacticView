@@ -662,3 +662,878 @@
 2023-07-25 15:18:10.2546 Trace Closing Layout Renderer: ${message}
 2023-07-25 15:18:10.2546 Debug Finished closing logging configuration.
 2023-07-25 15:18:10.2546 Info LogFactory has been closed.
+2023-07-28 15:40:34.3213 Info Message Template Auto Format enabled
+2023-07-28 15:40:34.5318 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.5432 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 15:40:34.5432 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.5480 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 15:40:34.5480 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.5480 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 15:40:34.5480 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.5480 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 15:40:34.5480 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 15:40:34.5641 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 15:40:34.5641 Trace ParseRulesElement
+2023-07-28 15:40:34.6074 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 15:40:34.6074 Debug --- NLog configuration dump ---
+2023-07-28 15:40:34.6074 Debug Targets:
+2023-07-28 15:40:34.6138 Debug FileTarget(Name=logfile)
+2023-07-28 15:40:34.6138 Debug Rules:
+2023-07-28 15:40:34.6138 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 15:40:34.6138 Debug --- End of NLog configuration dump ---
+2023-07-28 15:40:34.6288 Trace FindReachableObject<System.Object>:
+2023-07-28 15:40:34.6288 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 15:40:34.6288 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 15:40:34.6288 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 15:40:34.6288 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 15:40:34.6288 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 15:40:34.6288 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 15:40:34.6423 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6423 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 15:40:34.6423 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6423 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 15:40:34.6423 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 15:40:34.6423 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 15:40:34.6423 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 15:40:34.6423 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6423 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 15:40:34.6423 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6423 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 15:40:34.6423 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 15:40:34.6423 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 15:40:34.6627 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 15:40:34.6627 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 15:40:34.6778 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 15:40:34.6778 Trace Initializing Layout Renderer: ${message}
+2023-07-28 15:40:34.6778 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 15:40:34.6778 Trace Initializing Layout Renderer: ${level}
+2023-07-28 15:40:34.6778 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 15:40:34.6778 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 15:40:34.6778 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 15:40:34.6901 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.6901 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 15:40:34.6901 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 15:40:34.6901 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 15:40:34.6901 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6901 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 15:40:34.6901 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.6901 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 15:40:34.6901 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 15:40:34.6901 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 15:40:34.6901 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 15:40:34.6901 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 15:40:34.7052 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 15:40:34.7052 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 15:40:34.7052 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 15:40:34.7052 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.7052 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 15:40:34.7052 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 15:40:34.7052 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 15:40:34.7052 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 15:40:34.7052 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 15:40:34.7200 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 15:40:34.7200 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 15:40:34.7200 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 15:40:34.7200 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:24:25.3179 Info Message Template Auto Format enabled
+2023-07-28 16:24:25.4639 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:24:25.4639 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:24:25.4639 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:24:25.4639 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:24:25.4639 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:24:25.4639 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:24:25.4791 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:24:25.4791 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:24:25.4791 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:24:25.4791 Trace ParseRulesElement
+2023-07-28 16:24:25.5100 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:24:25.5100 Debug --- NLog configuration dump ---
+2023-07-28 16:24:25.5100 Debug Targets:
+2023-07-28 16:24:25.5100 Debug FileTarget(Name=logfile)
+2023-07-28 16:24:25.5100 Debug Rules:
+2023-07-28 16:24:25.5100 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:24:25.5100 Debug --- End of NLog configuration dump ---
+2023-07-28 16:24:25.5272 Trace FindReachableObject<System.Object>:
+2023-07-28 16:24:25.5272 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:24:25.5272 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:24:25.5272 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:24:25.5272 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:24:25.5272 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:24:25.5272 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:24:25.5272 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5272 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:24:25.5272 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5272 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:24:25.5272 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:24:25.5415 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:24:25.5415 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:24:25.5415 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5415 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:24:25.5415 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5415 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:24:25.5415 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:24:25.5415 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:24:25.5415 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:24:25.5415 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:24:25.5603 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:24:25.5603 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:24:25.5603 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:24:25.5603 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:24:25.5603 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:24:25.5603 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:24:25.5603 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:24:25.5603 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:24:25.5603 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:24:25.5728 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:24:25.5728 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:24:25.5728 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5728 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:24:25.5728 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5728 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:24:25.5728 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:24:25.5728 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:24:25.5728 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:24:25.5728 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:24:25.5728 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:24:25.5728 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:24:25.5728 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:24:25.5728 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5728 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:24:25.5892 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:24:25.5892 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:24:25.5892 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:24:25.5892 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:24:25.5892 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:24:25.5892 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:24:25.5892 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:24:25.5892 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:24:27.8080 Info AppDomain Shutting down. LogFactory closing...
+2023-07-28 16:24:27.8130 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-28 16:24:27.8130 Trace Flushing all 1 targets...
+2023-07-28 16:24:27.8130 Trace ForEachItemInParallel() 1 items
+2023-07-28 16:24:27.8130 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-28 16:24:27.8274 Trace Continuation invoked: 
+2023-07-28 16:24:27.8274 Trace Parallel task completed. 0 items remaining
+2023-07-28 16:24:27.8274 Debug Flush completed
+2023-07-28 16:24:27.8274 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-28 16:24:27.8274 Debug Closing logging configuration...
+2023-07-28 16:24:27.8274 Trace Closing FileTarget(Name=logfile)
+2023-07-28 16:24:27.8274 Debug FileTarget(Name=logfile): Closing...
+2023-07-28 16:24:27.8434 Debug FileTarget(Name=logfile): Closed.
+2023-07-28 16:24:27.8434 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${shortdate}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:24:27.8434 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${longdate}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${level}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:24:27.8434 Trace Closing Layout Renderer: ${message}
+2023-07-28 16:24:27.8434 Debug Finished closing logging configuration.
+2023-07-28 16:24:27.8434 Info LogFactory has been closed.
+2023-07-28 16:36:05.4098 Info Message Template Auto Format enabled
+2023-07-28 16:36:05.5228 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.5228 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:36:05.5228 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.5228 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:36:05.5228 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.5228 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:36:05.5228 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.5376 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:36:05.5376 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:36:05.5376 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:36:05.5376 Trace ParseRulesElement
+2023-07-28 16:36:05.5656 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:36:05.5680 Debug --- NLog configuration dump ---
+2023-07-28 16:36:05.5680 Debug Targets:
+2023-07-28 16:36:05.5826 Trace FindReachableObject<System.Object>:
+2023-07-28 16:36:05.5826 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:36:05.5826 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:36:05.5826 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:36:05.5826 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:36:05.5826 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:36:05.5826 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:36:05.5826 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.5826 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:36:05.5826 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.5826 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:36:05.5826 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:36:05.5826 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:36:05.5826 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:36:05.6030 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6030 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:36:05.6030 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6030 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:36:05.6030 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:36:05.6030 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:36:05.6030 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:36:05.6030 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:36:05.6223 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:36:05.6223 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:36:05.6223 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:36:05.6223 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:36:05.6223 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:36:05.6223 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:36:05.6223 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:36:05.6223 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.6223 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:36:05.6353 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:36:05.6353 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:36:05.6353 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6353 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:36:05.6353 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6353 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:36:05.6353 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:36:05.6353 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:36:05.6353 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:36:05.6353 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:36:05.6353 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:36:05.6353 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:36:05.6353 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:36:05.6498 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6498 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:36:05.6498 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:36:05.6498 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:36:05.6498 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:36:05.6498 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:36:05.6498 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:36:05.6498 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:36:05.6498 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:36:05.6498 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:36:07.9191 Info AppDomain Shutting down. LogFactory closing...
+2023-07-28 16:36:07.9257 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-28 16:36:07.9257 Trace Flushing all 1 targets...
+2023-07-28 16:36:07.9257 Trace ForEachItemInParallel() 1 items
+2023-07-28 16:36:07.9257 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-28 16:36:07.9257 Trace Continuation invoked: 
+2023-07-28 16:36:07.9257 Trace Parallel task completed. 0 items remaining
+2023-07-28 16:36:07.9468 Debug Flush completed
+2023-07-28 16:36:07.9468 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-28 16:36:07.9468 Debug Closing logging configuration...
+2023-07-28 16:36:07.9468 Trace Closing FileTarget(Name=logfile)
+2023-07-28 16:36:07.9468 Debug FileTarget(Name=logfile): Closing...
+2023-07-28 16:36:07.9589 Debug FileTarget(Name=logfile): Closed.
+2023-07-28 16:36:07.9589 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${shortdate}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:36:07.9589 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${longdate}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${level}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:36:07.9589 Trace Closing Layout Renderer: ${message}
+2023-07-28 16:36:07.9716 Debug Finished closing logging configuration.
+2023-07-28 16:36:07.9716 Info LogFactory has been closed.
+2023-07-28 16:38:17.2112 Info Message Template Auto Format enabled
+2023-07-28 16:38:17.3325 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.3325 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:17.3325 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.3325 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:17.3474 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.3474 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:17.3474 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.3474 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:17.3474 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:38:17.3474 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:38:17.3474 Trace ParseRulesElement
+2023-07-28 16:38:17.3864 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:38:17.3864 Debug --- NLog configuration dump ---
+2023-07-28 16:38:17.3864 Debug Targets:
+2023-07-28 16:38:17.3864 Debug FileTarget(Name=logfile)
+2023-07-28 16:38:17.3935 Debug Rules:
+2023-07-28 16:38:17.3935 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:38:17.3935 Debug --- End of NLog configuration dump ---
+2023-07-28 16:38:17.3935 Trace FindReachableObject<System.Object>:
+2023-07-28 16:38:17.4096 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:38:17.4096 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:38:17.4096 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:38:17.4096 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:38:17.4096 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:38:17.4096 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:17.4096 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4096 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:17.4096 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4250 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:38:17.4250 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:38:17.4250 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:17.4250 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:17.4250 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4250 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:17.4250 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4250 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:17.4250 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:38:17.4250 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:38:17.4412 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:38:17.4412 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:38:17.4412 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:38:17.4412 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:38:17.4412 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:17.4565 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:38:17.4565 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:17.4565 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:38:17.4565 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:38:17.4766 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.4766 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:38:17.4766 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:17.4766 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:17.4766 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4766 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:17.4875 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.4875 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:17.4875 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:17.4875 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:38:17.4875 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:17.4875 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:38:17.4875 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:17.4875 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:38:17.4875 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:17.5046 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.5046 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:17.5046 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:17.5046 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:38:17.5046 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:38:17.5046 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:38:17.5046 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:38:17.5046 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:38:17.5046 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:38:17.5192 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:38:19.3231 Info AppDomain Shutting down. LogFactory closing...
+2023-07-28 16:38:19.3276 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-28 16:38:19.3276 Trace Flushing all 1 targets...
+2023-07-28 16:38:19.3276 Trace ForEachItemInParallel() 1 items
+2023-07-28 16:38:19.3276 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-28 16:38:19.3276 Trace Continuation invoked: 
+2023-07-28 16:38:19.3276 Trace Parallel task completed. 0 items remaining
+2023-07-28 16:38:19.3276 Debug Flush completed
+2023-07-28 16:38:19.3441 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-28 16:38:19.3441 Debug Closing logging configuration...
+2023-07-28 16:38:19.3441 Trace Closing FileTarget(Name=logfile)
+2023-07-28 16:38:19.3441 Debug FileTarget(Name=logfile): Closing...
+2023-07-28 16:38:19.3441 Debug FileTarget(Name=logfile): Closed.
+2023-07-28 16:38:19.3441 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:38:19.3441 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:19.3441 Trace Closing Layout Renderer: ${shortdate}
+2023-07-28 16:38:19.3441 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:19.3590 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:38:19.3590 Trace Closing Layout Renderer: ${longdate}
+2023-07-28 16:38:19.3590 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:19.3590 Trace Closing Layout Renderer: ${level}
+2023-07-28 16:38:19.3590 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:19.3590 Trace Closing Layout Renderer: ${message}
+2023-07-28 16:38:19.3590 Debug Finished closing logging configuration.
+2023-07-28 16:38:19.3590 Info LogFactory has been closed.
+2023-07-28 16:38:47.8166 Info Message Template Auto Format enabled
+2023-07-28 16:38:47.9426 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:47.9500 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:47.9500 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:47.9500 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:47.9500 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:47.9500 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:47.9500 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:47.9500 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:47.9652 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:38:47.9652 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:38:47.9652 Trace ParseRulesElement
+2023-07-28 16:38:47.9934 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:38:47.9964 Debug --- NLog configuration dump ---
+2023-07-28 16:38:47.9964 Debug Targets:
+2023-07-28 16:38:47.9964 Debug FileTarget(Name=logfile)
+2023-07-28 16:38:47.9964 Debug Rules:
+2023-07-28 16:38:47.9964 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:38:47.9964 Debug --- End of NLog configuration dump ---
+2023-07-28 16:38:48.0129 Trace FindReachableObject<System.Object>:
+2023-07-28 16:38:48.0129 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:38:48.0129 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:38:48.0129 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:38:48.0129 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:38:48.0129 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:38:48.0129 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:48.0129 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0129 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:48.0260 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0260 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:38:48.0260 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:38:48.0260 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:48.0260 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:48.0260 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0260 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:48.0260 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0260 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:48.0260 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:38:48.0260 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:38:48.0421 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:38:48.0421 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:38:48.0421 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:38:48.0421 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:38:48.0421 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:48.0421 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:38:48.0421 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:48.0583 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:38:48.0583 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:38:48.0583 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:48.0583 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:38:48.0583 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:48.0583 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:38:48.0583 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0583 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:38:48.0583 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0730 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:38:48.0730 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:48.0730 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:38:48.0730 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:38:48.0730 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:38:48.0730 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:38:48.0730 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:38:48.0730 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:38:48.0730 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0730 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:38:48.0730 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:38:48.0730 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:38:48.0917 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:38:48.0917 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:38:48.0917 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:38:48.0917 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:38:48.0917 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:38:48.0917 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:38:50.2031 Info AppDomain Shutting down. LogFactory closing...
+2023-07-28 16:38:50.2083 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-28 16:38:50.2083 Trace Flushing all 1 targets...
+2023-07-28 16:38:50.2083 Trace ForEachItemInParallel() 1 items
+2023-07-28 16:38:50.2083 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-28 16:38:50.2083 Trace Continuation invoked: 
+2023-07-28 16:38:50.2083 Trace Parallel task completed. 0 items remaining
+2023-07-28 16:38:50.2273 Debug Flush completed
+2023-07-28 16:38:50.2273 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-28 16:38:50.2273 Debug Closing logging configuration...
+2023-07-28 16:38:50.2273 Trace Closing FileTarget(Name=logfile)
+2023-07-28 16:38:50.2273 Debug FileTarget(Name=logfile): Closing...
+2023-07-28 16:38:50.2273 Debug FileTarget(Name=logfile): Closed.
+2023-07-28 16:38:50.2380 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${shortdate}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:50.2380 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${longdate}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${level}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:38:50.2380 Trace Closing Layout Renderer: ${message}
+2023-07-28 16:38:50.2380 Debug Finished closing logging configuration.
+2023-07-28 16:38:50.2548 Info LogFactory has been closed.
+2023-07-28 16:39:20.6954 Info Message Template Auto Format enabled
+2023-07-28 16:39:20.8209 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.8209 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:39:20.8286 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.8286 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:39:20.8286 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.8286 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:39:20.8286 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.8286 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:39:20.8286 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:39:20.8286 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:39:20.8286 Trace ParseRulesElement
+2023-07-28 16:39:20.8679 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:39:20.8679 Debug --- NLog configuration dump ---
+2023-07-28 16:39:20.8679 Debug Targets:
+2023-07-28 16:39:20.8679 Debug FileTarget(Name=logfile)
+2023-07-28 16:39:20.8743 Debug Rules:
+2023-07-28 16:39:20.8743 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:39:20.8743 Debug --- End of NLog configuration dump ---
+2023-07-28 16:39:20.8743 Trace FindReachableObject<System.Object>:
+2023-07-28 16:39:20.8743 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:39:20.8911 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:39:20.8911 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:39:20.8911 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:39:20.8911 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:39:20.8911 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:39:20.8911 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.8911 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:39:20.8911 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.8911 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:39:20.8911 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:39:20.8911 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:39:20.9056 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:39:20.9056 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9056 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:39:20.9056 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9056 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:39:20.9056 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:39:20.9056 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:39:20.9056 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:39:20.9212 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:39:20.9212 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:39:20.9212 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:39:20.9212 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:39:20.9212 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:39:20.9212 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:39:20.9212 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:39:20.9212 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:39:20.9403 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.9403 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:39:20.9403 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:39:20.9403 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:39:20.9403 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9403 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:39:20.9403 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9403 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:39:20.9403 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:39:20.9528 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:39:20.9528 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:39:20.9554 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:39:20.9554 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:39:20.9554 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:39:20.9554 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:39:20.9554 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9554 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:39:20.9554 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:39:20.9554 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:39:20.9554 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:39:20.9554 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:39:20.9554 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:39:20.9554 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:39:20.9554 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:39:20.9554 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:39:24.2899 Info AppDomain Shutting down. LogFactory closing...
+2023-07-28 16:39:24.2899 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-28 16:39:24.2981 Trace Flushing all 1 targets...
+2023-07-28 16:39:24.2981 Trace ForEachItemInParallel() 1 items
+2023-07-28 16:39:24.2981 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-28 16:39:24.2981 Trace Continuation invoked: 
+2023-07-28 16:39:24.2981 Trace Parallel task completed. 0 items remaining
+2023-07-28 16:39:24.2981 Debug Flush completed
+2023-07-28 16:39:24.3121 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-28 16:39:24.3121 Debug Closing logging configuration...
+2023-07-28 16:39:24.3121 Trace Closing FileTarget(Name=logfile)
+2023-07-28 16:39:24.3121 Debug FileTarget(Name=logfile): Closing...
+2023-07-28 16:39:24.3121 Debug FileTarget(Name=logfile): Closed.
+2023-07-28 16:39:24.3121 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:39:24.3121 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:39:24.3121 Trace Closing Layout Renderer: ${shortdate}
+2023-07-28 16:39:24.3121 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:39:24.3284 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:39:24.3284 Trace Closing Layout Renderer: ${longdate}
+2023-07-28 16:39:24.3284 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:39:24.3284 Trace Closing Layout Renderer: ${level}
+2023-07-28 16:39:24.3284 Trace Closing Layout Renderer: ${literal}
+2023-07-28 16:39:24.3284 Trace Closing Layout Renderer: ${message}
+2023-07-28 16:39:24.3284 Debug Finished closing logging configuration.
+2023-07-28 16:39:24.3284 Info LogFactory has been closed.
+2023-07-28 16:46:18.8825 Info Message Template Auto Format enabled
+2023-07-28 16:46:19.1480 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.1480 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:46:19.1662 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.1662 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:46:19.1784 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.1784 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:46:19.1784 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.1784 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:46:19.1784 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:46:19.1784 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:46:19.1784 Trace ParseRulesElement
+2023-07-28 16:46:19.2383 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:46:19.2422 Debug --- NLog configuration dump ---
+2023-07-28 16:46:19.2422 Debug Targets:
+2023-07-28 16:46:19.2422 Debug FileTarget(Name=logfile)
+2023-07-28 16:46:19.2422 Debug Rules:
+2023-07-28 16:46:19.2422 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:46:19.2422 Debug --- End of NLog configuration dump ---
+2023-07-28 16:46:19.2667 Trace FindReachableObject<System.Object>:
+2023-07-28 16:46:19.2667 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:46:19.2723 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:46:19.2723 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:46:19.2723 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:46:19.2723 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:46:19.2723 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:46:19.2723 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.2889 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:46:19.2889 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.2889 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:46:19.2889 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:46:19.2889 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:46:19.2889 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:46:19.2889 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.2889 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:46:19.2889 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.2889 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:46:19.2889 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:46:19.3055 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:46:19.3055 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:46:19.3055 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:46:19.3292 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:46:19.3292 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:46:19.3292 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:46:19.3292 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:46:19.3292 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:46:19.3292 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:46:19.3374 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:46:19.3374 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.3374 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:46:19.3374 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:46:19.3374 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:46:19.3374 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.3374 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:46:19.3527 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.3527 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:46:19.3527 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:46:19.3527 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:46:19.3610 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:46:19.3610 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:46:19.3610 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:46:19.3610 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:46:19.3610 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:46:19.3610 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.3610 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:46:19.3610 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:46:19.3610 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:46:19.3788 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:46:19.3788 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:46:19.3788 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:46:19.3788 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:46:19.3788 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:46:19.3788 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:47:44.7195 Info Message Template Auto Format enabled
+2023-07-28 16:47:44.9507 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:44.9584 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:47:44.9584 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:44.9584 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:47:44.9770 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:44.9770 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:47:44.9770 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:44.9770 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:47:44.9856 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:47:44.9905 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:47:44.9905 Trace ParseRulesElement
+2023-07-28 16:47:45.0282 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:47:45.0282 Debug --- NLog configuration dump ---
+2023-07-28 16:47:45.0282 Debug Targets:
+2023-07-28 16:47:45.0366 Debug FileTarget(Name=logfile)
+2023-07-28 16:47:45.0366 Debug Rules:
+2023-07-28 16:47:45.0366 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:47:45.0366 Debug --- End of NLog configuration dump ---
+2023-07-28 16:47:45.0537 Trace FindReachableObject<System.Object>:
+2023-07-28 16:47:45.0537 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:47:45.0537 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:47:45.0537 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:47:45.0537 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:47:45.0537 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:47:45.0676 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:47:45.0676 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.0676 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:47:45.0676 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.0676 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:47:45.0676 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:47:45.0676 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:47:45.0676 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:47:45.0676 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.0676 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:47:45.0676 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.0831 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:47:45.0831 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:47:45.0831 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:47:45.0831 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:47:45.0831 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:47:45.1159 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:47:45.1159 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:47:45.1159 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:47:45.1211 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:47:45.1211 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:47:45.1211 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:47:45.1211 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:47:45.1211 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:45.1365 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:47:45.1365 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:47:45.1365 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:47:45.1365 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.1365 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:47:45.1365 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.1365 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:47:45.1522 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:47:45.1522 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:47:45.1522 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:47:45.1572 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:47:45.1572 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:47:45.1572 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:47:45.1572 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:47:45.1572 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.1572 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:47:45.1572 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:47:45.1572 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:47:45.1747 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:47:45.1747 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:47:45.1747 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:47:45.1747 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:47:45.1747 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:47:45.1747 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-28 16:52:04.8069 Info Message Template Auto Format enabled
+2023-07-28 16:52:05.0616 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.0677 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:52:05.0677 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.0677 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:52:05.0888 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.0888 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:52:05.0888 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.0888 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:52:05.0888 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:52:05.1018 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-28 16:52:05.1018 Trace ParseRulesElement
+2023-07-28 16:52:05.1510 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-28 16:52:05.1510 Debug --- NLog configuration dump ---
+2023-07-28 16:52:05.1591 Debug Targets:
+2023-07-28 16:52:05.1591 Debug FileTarget(Name=logfile)
+2023-07-28 16:52:05.1591 Debug Rules:
+2023-07-28 16:52:05.1790 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-28 16:52:05.1790 Debug --- End of NLog configuration dump ---
+2023-07-28 16:52:05.1984 Trace FindReachableObject<System.Object>:
+2023-07-28 16:52:05.1984 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-28 16:52:05.1984 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-28 16:52:05.2084 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:52:05.2084 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:52:05.2084 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:52:05.2084 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:52:05.2084 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.2084 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:52:05.2084 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.2249 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:52:05.2249 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:52:05.2249 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:52:05.2249 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:52:05.2249 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.2249 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:52:05.2249 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.2249 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:52:05.2401 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-28 16:52:05.2401 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-28 16:52:05.2401 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-28 16:52:05.2610 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-28 16:52:05.2610 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-28 16:52:05.2709 Trace Initializing Layout Renderer: ${message}
+2023-07-28 16:52:05.2709 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:52:05.2709 Trace Initializing Layout Renderer: ${level}
+2023-07-28 16:52:05.2709 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:52:05.2709 Trace Initializing Layout Renderer: ${longdate}
+2023-07-28 16:52:05.2709 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-28 16:52:05.2911 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.2911 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-28 16:52:05.2911 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:52:05.2911 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-28 16:52:05.2911 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.3029 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-28 16:52:05.3029 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.3029 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-28 16:52:05.3029 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:52:05.3029 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-28 16:52:05.3029 Trace Initializing Layout Renderer: ${literal}
+2023-07-28 16:52:05.3029 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-28 16:52:05.3189 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-28 16:52:05.3189 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-28 16:52:05.3189 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-28 16:52:05.3189 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.3189 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-28 16:52:05.3189 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-28 16:52:05.3189 Trace Initializing FileTarget(Name=logfile)
+2023-07-28 16:52:05.3386 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-28 16:52:05.3386 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-28 16:52:05.3386 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-28 16:52:05.3386 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-28 16:52:05.3386 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-28 16:52:05.3386 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-31 09:57:49.9339 Info Message Template Auto Format enabled
+2023-07-31 09:57:50.1525 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.1658 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-31 09:57:50.1658 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.1658 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-31 09:57:50.1817 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.1817 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-31 09:57:50.1817 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.1817 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-31 09:57:50.1817 Debug Adding target NLog.Targets.FileTarget(Name=logfile)
+2023-07-31 09:57:50.1906 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-31 09:57:50.1906 Trace ParseRulesElement
+2023-07-31 09:57:50.2429 Debug Watching file-filter 'nlog.config' in directory: D:\С#\training\GalacticView\GalacticViewWebAPI
+2023-07-31 09:57:50.2429 Debug --- NLog configuration dump ---
+2023-07-31 09:57:50.2429 Debug Targets:
+2023-07-31 09:57:50.2429 Debug FileTarget(Name=logfile)
+2023-07-31 09:57:50.2429 Debug Rules:
+2023-07-31 09:57:50.2563 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2023-07-31 09:57:50.2563 Debug --- End of NLog configuration dump ---
+2023-07-31 09:57:50.2563 Trace FindReachableObject<System.Object>:
+2023-07-31 09:57:50.2563 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2023-07-31 09:57:50.2724 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic.IList`1[NLog.Targets.Target]
+2023-07-31 09:57:50.2724 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-31 09:57:50.2724 Trace   Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-31 09:57:50.2724 Trace   Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-31 09:57:50.2724 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-31 09:57:50.2724 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.2724 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-31 09:57:50.2724 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.2724 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-31 09:57:50.2724 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-31 09:57:50.2886 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-31 09:57:50.2886 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-31 09:57:50.2886 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.2886 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-31 09:57:50.2886 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.2886 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-31 09:57:50.2886 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic.IList`1[NLog.Config.LoggingRule]
+2023-07-31 09:57:50.2886 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic.IList`1[NLog.Filters.Filter]
+2023-07-31 09:57:50.2886 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\С#\training\GalacticView\GalacticViewWebAPI\nlog.config
+2023-07-31 09:57:50.3087 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2023-07-31 09:57:50.3087 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2023-07-31 09:57:50.3087 Trace Initializing Layout Renderer: ${message}
+2023-07-31 09:57:50.3087 Trace Initializing Layout Renderer: ${literal}
+2023-07-31 09:57:50.3087 Trace Initializing Layout Renderer: ${level}
+2023-07-31 09:57:50.3087 Trace Initializing Layout Renderer: ${literal}
+2023-07-31 09:57:50.3087 Trace Initializing Layout Renderer: ${longdate}
+2023-07-31 09:57:50.3224 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2023-07-31 09:57:50.3224 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.3224 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2023-07-31 09:57:50.3224 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-31 09:57:50.3224 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2023-07-31 09:57:50.3224 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.3224 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2023-07-31 09:57:50.3224 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.3224 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2023-07-31 09:57:50.3380 Trace Initializing Layout Renderer: ${literal}
+2023-07-31 09:57:50.3380 Trace Initializing Layout Renderer: ${shortdate}
+2023-07-31 09:57:50.3380 Trace Initializing Layout Renderer: ${literal}
+2023-07-31 09:57:50.3380 Trace Initializing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-31 09:57:50.3380 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2023-07-31 09:57:50.3380 Trace Scanning SimpleLayout 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt'
+2023-07-31 09:57:50.3380 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic.IEnumerable`1[NLog.LayoutRenderers.LayoutRenderer]
+2023-07-31 09:57:50.3380 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.3380 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2023-07-31 09:57:50.3380 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2023-07-31 09:57:50.3380 Trace Initializing FileTarget(Name=logfile)
+2023-07-31 09:57:50.3380 Trace FindReachableObject<NLog.Layouts.Layout>:
+2023-07-31 09:57:50.3380 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2023-07-31 09:57:50.3380 Trace  Scanning Property FileName 'D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt' NLog.Layouts.Layout
+2023-07-31 09:57:50.3562 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts.Layout
+2023-07-31 09:57:50.3562 Trace FileTarget(Name=logfile) has 2 layouts
+2023-07-31 09:57:50.3562 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2023-07-31 10:00:23.0423 Info AppDomain Shutting down. LogFactory closing...
+2023-07-31 10:00:23.0423 Debug Stopping file watching for path 'D:\С#\training\GalacticView\GalacticViewWebAPI' filter 'nlog.config'
+2023-07-31 10:00:23.0590 Trace Flushing all 1 targets...
+2023-07-31 10:00:23.0590 Trace ForEachItemInParallel() 1 items
+2023-07-31 10:00:23.0590 Trace FileTarget(Name=logfile): FlushAsync
+2023-07-31 10:00:23.0752 Trace Continuation invoked: 
+2023-07-31 10:00:23.0752 Trace Parallel task completed. 0 items remaining
+2023-07-31 10:00:23.0813 Debug Flush completed
+2023-07-31 10:00:23.0813 Trace FileTarget(Name=logfile): FlushAsync Done
+2023-07-31 10:00:23.0813 Debug Closing logging configuration...
+2023-07-31 10:00:23.0813 Trace Closing FileTarget(Name=logfile)
+2023-07-31 10:00:23.0813 Debug FileTarget(Name=logfile): Closing...
+2023-07-31 10:00:23.0813 Debug FileTarget(Name=logfile): Closed.
+2023-07-31 10:00:23.0813 Trace Closing D:\С#\training\GalacticView/GalacticViewWebAPI\logs\${shortdate}_logfile.txt
+2023-07-31 10:00:23.0813 Trace Closing Layout Renderer: ${literal}
+2023-07-31 10:00:23.0813 Trace Closing Layout Renderer: ${shortdate}
+2023-07-31 10:00:23.0813 Trace Closing Layout Renderer: ${literal}
+2023-07-31 10:00:23.0813 Trace Closing ${longdate} ${level:uppercase=true} ${message}
+2023-07-31 10:00:23.0813 Trace Closing Layout Renderer: ${longdate}
+2023-07-31 10:00:23.0813 Trace Closing Layout Renderer: ${literal}
+2023-07-31 10:00:23.1066 Trace Closing Layout Renderer: ${level}
+2023-07-31 10:00:23.1066 Trace Closing Layout Renderer: ${literal}
+2023-07-31 10:00:23.1066 Trace Closing Layout Renderer: ${message}
+2023-07-31 10:00:23.1066 Debug Finished closing logging configuration.
+2023-07-31 10:00:23.1124 Info LogFactory has been closed.
