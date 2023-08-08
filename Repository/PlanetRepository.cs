@@ -16,5 +16,8 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Planet> GetAllPlanets(bool trackChanges) =>
+            FindAll(trackChanges).OrderBy(c => c.Name).ToList();
     }
 }

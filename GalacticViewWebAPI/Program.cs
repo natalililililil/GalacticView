@@ -14,7 +14,7 @@ services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
 
-services.AddControllers();
+services.AddControllers().AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
 
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 // Add services to the container.
@@ -41,7 +41,7 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
-//link: https://localhost:7128/weatherforecast
+//link: https://localhost:5001/weatherforecast
 //app.MapGet("/weatherforecast", ((ILoggerManager logger) =>
 //{
 //    ILoggerManager _logger = logger;

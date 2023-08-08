@@ -8,6 +8,7 @@ namespace Service.Contracts
 {
     public interface IServiceManager
     {
-
+        IPlanetService PlanetService { get; }
+        ISatelliteService SatelliteService { get; }
     }
 }
