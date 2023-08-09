@@ -6,16 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace GalacticViewWebAPI.Presentation.Controllers
 {
-    [Route("api/controller")]
+    [Route("api/planets")]
     [ApiController]
     public class PlanetsController : ControllerBase
     {
         private readonly IServiceManager _service;
        
-
         public PlanetsController(IServiceManager service)
         {
             _service = service;

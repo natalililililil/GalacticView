@@ -1,6 +1,6 @@
 ﻿using Contracts;
-using Entities.Models;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Service
 {
@@ -15,13 +15,15 @@ namespace Service
             _logger = logger;
         }
 
-        public IEnumerable<Planet> GetAllPlanets(bool trachChanges)
+        public IEnumerable<PlanetDto> GetAllPlanets(bool trachChanges)
         {
             try
             {
                 var planets = _repository.Planet.GetAllPlanets(trachChanges);
 
-                return planets;
+                var planetsDto = planets.Select(c => new PlanetDto(c.Id, c.Name ?? "", 
+                    string.Join(' ', c.PlanetInfo, "Расстояние от солнца: " + c.DistanceFromTheSun + " млн км"))).ToList();
+                return planetsDto;
             }
             catch (Exception ex)
             {
