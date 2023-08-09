@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using AutoMapper;
 
 namespace Service
 {
@@ -8,11 +9,13 @@ namespace Service
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
+        private readonly IMapper _mapper;
 
-        public PlanetService(IRepositoryManager repository, ILoggerManager logger)
+        public PlanetService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public IEnumerable<PlanetDto> GetAllPlanets(bool trachChanges)
@@ -21,8 +24,8 @@ namespace Service
             {
                 var planets = _repository.Planet.GetAllPlanets(trachChanges);
 
-                var planetsDto = planets.Select(c => new PlanetDto(c.Id, c.Name ?? "", 
-                    string.Join(' ', c.PlanetInfo, "Расстояние от солнца: " + c.DistanceFromTheSun + " млн км"))).ToList();
+                var planetsDto = _mapper.Map<IEnumerable<PlanetDto>>(planets);
+
                 return planetsDto;
             }
             catch (Exception ex)

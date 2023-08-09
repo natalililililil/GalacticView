@@ -13,6 +13,7 @@ services.ConfigureLoggerService();
 services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
+services.AddAutoMapper(typeof(Program));
 
 services.AddControllers().AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
 

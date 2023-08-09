@@ -1,10 +1,6 @@
 ﻿using Contracts;
 using Service.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Service
 {
@@ -13,10 +9,10 @@ namespace Service
         private readonly Lazy<IPlanetService> _planetService;
         private readonly Lazy<ISatelliteService> _satelliteService;
 
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger)
+        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
         {
-            _planetService = new Lazy<IPlanetService>(() => new PlanetService(repositoryManager, logger));
-            _satelliteService = new Lazy<ISatelliteService>(() => new SatelliteService(repositoryManager, logger));
+            _planetService = new Lazy<IPlanetService>(() => new PlanetService(repositoryManager, logger, mapper));
+            _satelliteService = new Lazy<ISatelliteService>(() => new SatelliteService(repositoryManager, logger, mapper));
         }
 
         public IPlanetService PlanetService => _planetService.Value;
