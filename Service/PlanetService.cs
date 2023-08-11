@@ -20,20 +20,11 @@ namespace Service
 
         public IEnumerable<PlanetDto> GetAllPlanets(bool trachChanges)
         {
-            try
-            {
-                var planets = _repository.Planet.GetAllPlanets(trachChanges);
+            var planets = _repository.Planet.GetAllPlanets(trachChanges);
 
-                var planetsDto = _mapper.Map<IEnumerable<PlanetDto>>(planets);
+            var planetsDto = _mapper.Map<IEnumerable<PlanetDto>>(planets);
 
-                return planetsDto;
-            }
-            catch (Exception ex)
-            {
-
-                _logger.LogError($"Something went wrong in the {nameof(GetAllPlanets)} service method {ex}");
-                throw;
-            }
+            return planetsDto;
         }
     }
 }

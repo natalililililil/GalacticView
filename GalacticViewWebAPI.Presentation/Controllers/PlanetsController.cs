@@ -22,15 +22,8 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         [HttpGet]
         public IActionResult GetPlanets()
         {
-            try
-            {
-                var planets = _service.PlanetService.GetAllPlanets(trachChanges: false);
-                return Ok(planets);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal server error");
-            }
+            var planets = _service.PlanetService.GetAllPlanets(trachChanges: false);
+            return Ok(planets);
         }
     }
 }
