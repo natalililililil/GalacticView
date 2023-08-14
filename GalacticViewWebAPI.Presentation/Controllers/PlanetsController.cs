@@ -25,5 +25,12 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             var planets = _service.PlanetService.GetAllPlanets(trachChanges: false);
             return Ok(planets);
         }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetPlanet(Guid id)
+        {
+            var planet = _service.PlanetService.GetPlanet(id, trackChanges: false);
+            return Ok(planet);
+        }
     }
 }

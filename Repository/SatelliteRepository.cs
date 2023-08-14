@@ -16,5 +16,11 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Satellite> GetSetellites(Guid planetId, bool trackChanges) =>
+            FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToList();
+
+        public Satellite GetSetellite(Guid planetId, Guid id, bool trackChanges) =>
+            FindByCondition(s => s.PlanetId.Equals(planetId) && s.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }

@@ -19,5 +19,8 @@ namespace Repository
 
         public IEnumerable<Planet> GetAllPlanets(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+
+        public Planet GetPlanet(Guid planetId, bool trackChanges) =>
+            FindByCondition(с => с.Id.Equals(planetId), trackChanges).SingleOrDefault();
     }
 }

@@ -1,20 +1,46 @@
 ﻿using Contracts;
 using Service.Contracts;
 using AutoMapper;
+using Shared.DataTransferObjects;
+using Entities.Exceptions;
 
 namespace Service
 {
     internal sealed class SatelliteService : ISatelliteService
     {
         private readonly IRepositoryManager _repository;
-        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
         public SatelliteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
-            _logger = logger;
             _mapper = mapper;
+        }
+
+        public IEnumerable<SatelliteDto> GetSatellite(Guid planetId, bool trackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satellitesFromDb = _repository.Satellite.GetSetellites(planetId, trackChanges);
+            
+            var satellitesDto = _mapper.Map<IEnumerable<SatelliteDto>>(satellitesFromDb);
+            return satellitesDto;
+        }
+
+        public SatelliteDto GetSatellite(Guid planetId, Guid id, bool trackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satelliteDb = _repository.Satellite.GetSetellite(planetId, id, trackChanges);
+            if (satelliteDb is null)
+                throw new SatelliteNotFoundException(id);
+
+            var satellite = _mapper.Map<SatelliteDto>(satelliteDb);
+            return satellite;
         }
     }
 }
