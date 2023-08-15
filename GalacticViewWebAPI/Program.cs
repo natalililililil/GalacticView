@@ -16,7 +16,13 @@ services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
 services.AddAutoMapper(typeof(Program));
 
-services.AddControllers().AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
+services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
+}).AddXmlDataContractSerializerFormatters()
+.AddCustomCSVFormatter()
+.AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
 
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 

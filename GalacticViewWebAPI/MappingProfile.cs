@@ -9,7 +9,7 @@ namespace GalacticViewWebAPI
         public MappingProfile()
         {
             CreateMap<Planet, PlanetDto>()
-                .ForCtorParam("FullPlanetInfo",
+                .ForMember(p => p.FullPlanetInfo,
                 opt => opt.MapFrom(x => string.Join(' ', x.PlanetInfo, "Расстояние от солнца: " + x.DistanceFromTheSun + " млн км")));
 
             CreateMap<Satellite, SatelliteDto>();
