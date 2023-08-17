@@ -1,6 +1,6 @@
-using AutoMapper;
 using Contracts;
 using GalacticViewWebAPI.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,11 @@ services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
 services.AddAutoMapper(typeof(Program));
+
+services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 services.AddControllers(config =>
 {

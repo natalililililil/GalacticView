@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace GalacticViewWebAPI.Presentation.Controllers
 {
@@ -21,11 +22,22 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             return Ok(satellites);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}", Name = "GetSatelliteForPlanet")]
         public IActionResult GetSatelliteForPlanet(Guid planetId, Guid id)
         {
             var satellite = _service.SatelliteService.GetSatellite(planetId, id, trackChanges: false);
             return Ok(satellite);
+        }
+
+        [HttpPost]
+        public IActionResult CreateSatelliteForPlanet(Guid planetId, [FromBody] SatelliteForCreationDto satellite)
+        {
+            if (satellite is null)
+                return BadRequest("SatelliteForCreationDto is null");
+
+            var satelliteToReturn = _service.SatelliteService.CreateSatelliteForPlanet(planetId, satellite, trackChanges: false);
+
+            return CreatedAtRoute("GetSatelliteForPlanet", new { planetId, id = satelliteToReturn.Id}, satelliteToReturn);
         }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Shared.DataTransferObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Contracts
 {
@@ -11,5 +6,6 @@ namespace Service.Contracts
     {
         IEnumerable<SatelliteDto> GetSatellite(Guid planetId, bool trackChanges);
         SatelliteDto GetSatellite(Guid planetId, Guid id, bool trackChanges);
+        SatelliteDto CreateSatelliteForPlanet(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges);
     }
 }

@@ -3,6 +3,7 @@ using Service.Contracts;
 using Shared.DataTransferObjects;
 using AutoMapper;
 using Entities.Exceptions;
+using Entities.Models;
 
 namespace Service
 {
@@ -33,6 +34,17 @@ namespace Service
 
             var planetDto = _mapper.Map<PlanetDto>(planet);
             return planetDto;
+        }
+
+        public PlanetDto CreatePlanet(PlanetForCreationDto planet)
+        {
+            var planetEntity = _mapper.Map<Planet>(planet);
+
+            _repository.Planet.CreatePlanet(planetEntity);
+            _repository.Save();
+
+            var planetToReturn = _mapper.Map<PlanetDto>(planetEntity);
+            return planetToReturn;
         }
     }
 }

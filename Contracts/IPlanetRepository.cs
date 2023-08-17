@@ -6,5 +6,6 @@ namespace Contracts
     {
         IEnumerable<Planet> GetAllPlanets(bool trackChanges);
         Planet GetPlanet(Guid planetId, bool trackChanges);
+        void CreatePlanet(Planet planet);
     }
 }

@@ -22,5 +22,7 @@ namespace Repository
 
         public Planet GetPlanet(Guid planetId, bool trackChanges) =>
             FindByCondition(с => с.Id.Equals(planetId), trackChanges).SingleOrDefault();
+
+        public void CreatePlanet(Planet planet) => Create(planet);
     }
 }

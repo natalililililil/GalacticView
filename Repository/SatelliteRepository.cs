@@ -22,5 +22,11 @@ namespace Repository
 
         public Satellite GetSetellite(Guid planetId, Guid id, bool trackChanges) =>
             FindByCondition(s => s.PlanetId.Equals(planetId) && s.Id.Equals(id), trackChanges).SingleOrDefault();
+
+        public void CreateSatelliteForPlanet(Guid planetId, Satellite satellite)
+        {
+            satellite.PlanetId = planetId;
+            Create(satellite);
+        }
     }
 }

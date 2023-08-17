@@ -3,6 +3,7 @@ using Service.Contracts;
 using AutoMapper;
 using Shared.DataTransferObjects;
 using Entities.Exceptions;
+using Entities.Models;
 
 namespace Service
 {
@@ -41,6 +42,22 @@ namespace Service
 
             var satellite = _mapper.Map<SatelliteDto>(satelliteDb);
             return satellite;
+        }
+
+        public SatelliteDto CreateSatelliteForPlanet(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satelliteEntity = _mapper.Map<Satellite>(satelliteForCreation);
+
+            _repository.Satellite.CreateSatelliteForPlanet(planetId, satelliteEntity);
+            _repository.Save();
+
+            var satelliteToReturn = _mapper.Map<SatelliteDto>(satelliteEntity);
+
+            return satelliteToReturn;
         }
     }
 }

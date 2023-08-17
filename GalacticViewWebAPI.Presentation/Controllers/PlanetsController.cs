@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.DataTransferObjects;
 
 namespace GalacticViewWebAPI.Presentation.Controllers
 {
@@ -26,11 +22,22 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             return Ok(planets);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}", Name = "PlanetById")]
         public IActionResult GetPlanet(Guid id)
         {
             var planet = _service.PlanetService.GetPlanet(id, trackChanges: false);
             return Ok(planet);
+        }
+
+        [HttpPost]
+        public IActionResult CreatePlanet([FromBody] PlanetForCreationDto planet)
+        {
+            if (planet is null)
+                return BadRequest("PlanetForCreationDto object is null");
+
+            var createdPlanet = _service.PlanetService.CreatePlanet(planet);
+
+            return CreatedAtRoute("PlanetById", new { id = createdPlanet.Id }, createdPlanet);
         }
     }
 }
