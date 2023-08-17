@@ -7,5 +7,6 @@ namespace Contracts
         IEnumerable<Planet> GetAllPlanets(bool trackChanges);
         Planet GetPlanet(Guid planetId, bool trackChanges);
         void CreatePlanet(Planet planet);
+        IEnumerable<Planet> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
     }
 }

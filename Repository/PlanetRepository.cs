@@ -24,5 +24,8 @@ namespace Repository
             FindByCondition(с => с.Id.Equals(planetId), trackChanges).SingleOrDefault();
 
         public void CreatePlanet(Planet planet) => Create(planet);
+
+        public IEnumerable<Planet> GetByIds(IEnumerable<Guid> ids, bool trackChanges) =>
+            FindByCondition(x => ids.Contains(x.Id), trackChanges).ToList();
     }
 }

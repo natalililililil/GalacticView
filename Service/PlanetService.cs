@@ -46,5 +46,40 @@ namespace Service
             var planetToReturn = _mapper.Map<PlanetDto>(planetEntity);
             return planetToReturn;
         }
+
+        public IEnumerable<PlanetDto> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids is null)
+                throw new IdParametersBadRequestException();
+
+            var planetEntities = _repository.Planet.GetByIds(ids, trackChanges);
+
+            if (ids.Count() != planetEntities.Count())
+                throw new CollectionByIdsBadRequestException();
+
+            var planetsToReturn = _mapper.Map<IEnumerable<PlanetDto>>(planetEntities);
+
+            return planetsToReturn;
+        }
+
+        public (IEnumerable<PlanetDto> planets, string ids) CreatePlanetCollecton
+            (IEnumerable<PlanetForCreationDto> planetColletion)
+        {
+            if (planetColletion is null)
+                throw new PlanetCollectionBadRequest();
+
+            var planetEntities = _mapper.Map<IEnumerable<Planet>>(planetColletion);
+            foreach (var planet in planetEntities)
+            {
+                _repository.Planet.CreatePlanet(planet);
+            }
+
+            _repository.Save();
+
+            var planetCollectionToReturn = _mapper.Map<IEnumerable<PlanetDto>>(planetEntities);
+            var ids = string.Join(",", planetCollectionToReturn.Select(p => p.Id));
+
+            return (planets: planetCollectionToReturn, ids: ids);
+        }
     }
 }
