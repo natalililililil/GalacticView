@@ -8,5 +8,7 @@ namespace Service.Contracts
         SatelliteDto GetSatellite(Guid planetId, Guid id, bool trackChanges);
         SatelliteDto CreateSatelliteForPlanet(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges);
         void DeleteSatelliteForPlanet(Guid planetId, Guid id, bool trackChanges);
+        void UpdateSatelliteForPlanet(Guid planetId, Guid id, SatelliteForUpdateDto satelliteForUpdate, bool planetTrackChanges,
+            bool satTrackChanges);
     }
 }

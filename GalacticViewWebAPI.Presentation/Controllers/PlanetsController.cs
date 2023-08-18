@@ -63,5 +63,16 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             _service.PlanetService.DeletePlanet(id, trackChanges: false);
             return NoContent();
         }
+
+        [HttpPut("{id:guid}")]
+        public IActionResult UpdatePlanet(Guid id, [FromBody] PlanetForUpdateDto planet)
+        {
+            if (planet is null)
+                return BadRequest("PlanetForUpdateDto is null.");
+
+            _service.PlanetService.UpdatePlanet(id, planet, trackChanges: true);
+
+            return NoContent();
+        }
     }
 }

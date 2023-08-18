@@ -73,5 +73,20 @@ namespace Service
             _repository.Satellite.DeleteSatellite(satellite);
             _repository.Save();
         }
+
+        public void UpdateSatelliteForPlanet(Guid planetId, Guid id, SatelliteForUpdateDto satelliteForUpdate, 
+            bool planetTrackChanges, bool satTrackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, planetTrackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satelliteEntity = _repository.Satellite.GetSetellite(planetId, id, satTrackChanges);
+            if (satelliteEntity is null)
+                throw new SatelliteNotFoundException(id);
+
+            _mapper.Map(satelliteForUpdate, satelliteEntity);
+            _repository.Save();
+        }
     }
 }

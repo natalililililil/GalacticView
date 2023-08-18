@@ -17,6 +17,10 @@ namespace GalacticViewWebAPI
             CreateMap<PlanetForCreationDto, Planet>();
 
             CreateMap<SatelliteForCreationDto, Satellite>();
+
+            CreateMap<SatelliteForUpdateDto, Satellite>();
+
+            CreateMap<PlanetForUpdateDto, Planet>();
         }
     }
 }

@@ -46,5 +46,18 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             _service.SatelliteService.DeleteSatelliteForPlanet(planetId, id, trackChanges: false);
             return NoContent();
         }
+
+        [HttpPut("{id:guid}")]
+        public IActionResult UpdateSatelliteForPlanet(Guid planetId, Guid id,
+            [FromBody] SatelliteForUpdateDto satellite)
+        {
+            if (satellite is null)
+                return BadRequest("SatelliteForUpdateDto object is null");
+
+            _service.SatelliteService.UpdateSatelliteForPlanet(planetId, id, satellite,
+                planetTrackChanges: false, satTrackChanges: true);
+
+            return NoContent();
+        }
     }
 }

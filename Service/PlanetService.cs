@@ -91,5 +91,15 @@ namespace Service
             _repository.Planet.DeletePlanet(planet);
             _repository.Save();
         }
+
+        public void UpdatePlanet(Guid planetId, PlanetForUpdateDto planetForUpdate, bool trackChanges)
+        {
+            var planetEntity = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planetEntity is null)
+                throw new PlanetNotFoundException(planetId);
+
+            _mapper.Map(planetForUpdate, planetEntity);
+            _repository.Save();
+        }
     }
 }
