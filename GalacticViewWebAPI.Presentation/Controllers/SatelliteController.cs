@@ -39,5 +39,12 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 
             return CreatedAtRoute("GetSatelliteForPlanet", new { planetId, id = satelliteToReturn.Id}, satelliteToReturn);
         }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteSatelliteForPlanet(Guid planetId, Guid id)
+        {
+            _service.SatelliteService.DeleteSatelliteForPlanet(planetId, id, trackChanges: false);
+            return NoContent();
+        }
     }
 }

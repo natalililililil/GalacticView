@@ -12,5 +12,6 @@ namespace Contracts
         IEnumerable<Satellite> GetSetellites(Guid planetId, bool trackChanges);
         Satellite GetSetellite(Guid planetId, Guid id, bool trackChanges);
         void CreateSatelliteForPlanet(Guid planetId, Satellite satellite);
+        void DeleteSatellite(Satellite satellite);
     }
 }

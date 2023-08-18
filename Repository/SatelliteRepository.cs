@@ -28,5 +28,7 @@ namespace Repository
             satellite.PlanetId = planetId;
             Create(satellite);
         }
+
+        public void DeleteSatellite(Satellite satellite) => Delete(satellite);
     }
 }

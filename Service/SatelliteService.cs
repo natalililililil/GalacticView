@@ -59,5 +59,19 @@ namespace Service
 
             return satelliteToReturn;
         }
+
+        public void DeleteSatelliteForPlanet(Guid planetId, Guid id, bool trackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satellite = _repository.Satellite.GetSetellite(planetId, id, trackChanges);
+            if (satellite is null)
+                throw new SatelliteNotFoundException(id);
+
+            _repository.Satellite.DeleteSatellite(satellite);
+            _repository.Save();
+        }
     }
 }

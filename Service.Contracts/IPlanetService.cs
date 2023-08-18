@@ -9,5 +9,6 @@ namespace Service.Contracts
         PlanetDto CreatePlanet(PlanetForCreationDto planet);
         IEnumerable<PlanetDto> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
         (IEnumerable<PlanetDto> planets, string ids) CreatePlanetCollecton(IEnumerable<PlanetForCreationDto> planetColletion);
+        void DeletePlanet(Guid planetId, bool trackChanges);   
     }
 }

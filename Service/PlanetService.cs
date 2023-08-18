@@ -81,5 +81,15 @@ namespace Service
 
             return (planets: planetCollectionToReturn, ids: ids);
         }
+
+        public void DeletePlanet(Guid planetId, bool trackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            _repository.Planet.DeletePlanet(planet);
+            _repository.Save();
+        }
     }
 }
