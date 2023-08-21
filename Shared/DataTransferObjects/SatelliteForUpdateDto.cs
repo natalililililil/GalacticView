@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Shared.DataTransferObjects
 {
-    public record SatelliteForUpdateDto(string Name, double DistanceFromTheSun, string SatelliteInfo);
+    public record SatelliteForUpdateDto(string Name, double DistanceFromThePlanet, string SatelliteInfo);
 }

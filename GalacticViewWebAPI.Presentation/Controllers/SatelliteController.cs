@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -56,6 +57,23 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 
             _service.SatelliteService.UpdateSatelliteForPlanet(planetId, id, satellite,
                 planetTrackChanges: false, satTrackChanges: true);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:guid}")]
+        public IActionResult PartiallyUpdateSatelliteForPlanet(Guid planetId, Guid id,
+            [FromBody] JsonPatchDocument<SatelliteForUpdateDto> patchDoc)
+        {
+            if (patchDoc is null)
+                return BadRequest("patchDoc object sent from client is null.");
+
+            var result = _service.SatelliteService.GetSatelliteForPatch(planetId, id, planetTrackChanges: false, 
+                satTrackChanges: true);
+
+            patchDoc.ApplyTo(result.satelliteToPatch);
+
+            _service.SatelliteService.SaveChangesForPatch(result.satelliteToPatch, result.satelliteEntity);
 
             return NoContent();
         }

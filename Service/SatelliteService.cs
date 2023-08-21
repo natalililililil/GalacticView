@@ -88,5 +88,27 @@ namespace Service
             _mapper.Map(satelliteForUpdate, satelliteEntity);
             _repository.Save();
         }
+
+        public (SatelliteForUpdateDto satelliteToPatch, Satellite satelliteEntity) GetSatelliteForPatch(Guid planetId,
+            Guid id, bool planetTrackChanges, bool satTrackChanges)
+        {
+            var planet = _repository.Planet.GetPlanet(planetId, planetTrackChanges);
+            if (planet is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var satelliteEntity = _repository.Satellite.GetSetellite(planetId, id, satTrackChanges);
+            if (satelliteEntity is null)
+                throw new SatelliteNotFoundException(id);
+
+            var satelliteToPatch = _mapper.Map<SatelliteForUpdateDto>(satelliteEntity);
+
+            return (satelliteToPatch, satelliteEntity);
+        }
+
+        public void SaveChangesForPatch(SatelliteForUpdateDto satelliteForPatch, Satellite satelliteEntity)
+        {
+            _mapper.Map(satelliteForPatch, satelliteEntity);
+            _repository.Save();
+        }
     }
 }

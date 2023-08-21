@@ -2,6 +2,9 @@ using Contracts;
 using GalacticViewWebAPI.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Options;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -21,10 +24,19 @@ services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
+
+NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
+new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
+.Services.BuildServiceProvider()
+.GetRequiredService<IOptions<MvcOptions>>().Value.InputFormatters
+.OfType<NewtonsoftJsonPatchInputFormatter>().First();
+
+
 services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
+    config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
 }).AddXmlDataContractSerializerFormatters()
 .AddCustomCSVFormatter()
 .AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
