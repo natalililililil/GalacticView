@@ -1,4 +1,5 @@
 ﻿using GalacticViewWebAPI.Presentation.ModelBinders;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -44,6 +45,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (planet is null)
                 return BadRequest("PlanetForCreationDto object is null");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var createdPlanet = _service.PlanetService.CreatePlanet(planet);
 
             return CreatedAtRoute("PlanetById", new { id = createdPlanet.Id }, createdPlanet);
@@ -52,6 +56,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         [HttpPost("collection")]
         public IActionResult CreatePlanetCollection([FromBody] IEnumerable<PlanetForCreationDto> planetColletion)
         {
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var result = _service.PlanetService.CreatePlanetCollecton(planetColletion);
 
             return CreatedAtRoute("PlanetCollection", new {result.ids}, result.planets);
@@ -70,7 +77,29 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (planet is null)
                 return BadRequest("PlanetForUpdateDto is null.");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             _service.PlanetService.UpdatePlanet(id, planet, trackChanges: true);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:guid}")]
+        public IActionResult PartiallyUpdatePlanet(Guid id, [FromBody] JsonPatchDocument<PlanetForUpdateDto> patchDoc)
+        {
+            if (patchDoc is null)
+                return BadRequest("patchDoc object sent from client is null.");
+
+            var result = _service.PlanetService.GetPlanetForPatch(id, planetTrackChanges: true);
+
+            patchDoc.ApplyTo(result.planetToPatch, ModelState);
+
+            TryValidateModel(result.planetToPatch);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState); 
+
+            _service.PlanetService.SaveChangesForPatch(result.planetToPatch, result.planetEntity);
 
             return NoContent();
         }

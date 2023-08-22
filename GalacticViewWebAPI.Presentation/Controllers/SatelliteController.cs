@@ -36,6 +36,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (satellite is null)
                 return BadRequest("SatelliteForCreationDto is null");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var satelliteToReturn = _service.SatelliteService.CreateSatelliteForPlanet(planetId, satellite, trackChanges: false);
 
             return CreatedAtRoute("GetSatelliteForPlanet", new { planetId, id = satelliteToReturn.Id}, satelliteToReturn);
@@ -55,6 +58,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (satellite is null)
                 return BadRequest("SatelliteForUpdateDto object is null");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             _service.SatelliteService.UpdateSatelliteForPlanet(planetId, id, satellite,
                 planetTrackChanges: false, satTrackChanges: true);
 
@@ -71,7 +77,11 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             var result = _service.SatelliteService.GetSatelliteForPatch(planetId, id, planetTrackChanges: false, 
                 satTrackChanges: true);
 
-            patchDoc.ApplyTo(result.satelliteToPatch);
+            patchDoc.ApplyTo(result.satelliteToPatch, ModelState);
+
+            TryValidateModel(result.satelliteToPatch);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             _service.SatelliteService.SaveChangesForPatch(result.satelliteToPatch, result.satelliteEntity);
 

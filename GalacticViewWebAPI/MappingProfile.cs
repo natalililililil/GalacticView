@@ -20,7 +20,7 @@ namespace GalacticViewWebAPI
 
             CreateMap<SatelliteForUpdateDto, Satellite>().ReverseMap();
 
-            CreateMap<PlanetForUpdateDto, Planet>();
+            CreateMap<PlanetForUpdateDto, Planet>().ReverseMap();
         }
     }
 }

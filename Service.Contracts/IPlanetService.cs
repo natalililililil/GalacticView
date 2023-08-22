@@ -1,4 +1,5 @@
-﻿using Shared.DataTransferObjects;
+﻿using Entities.Models;
+using Shared.DataTransferObjects;
 
 namespace Service.Contracts
 {
@@ -11,6 +12,8 @@ namespace Service.Contracts
         (IEnumerable<PlanetDto> planets, string ids) CreatePlanetCollecton(IEnumerable<PlanetForCreationDto> planetColletion);
         void DeletePlanet(Guid planetId, bool trackChanges);   
         void UpdatePlanet(Guid planetId, PlanetForUpdateDto planetForUpdate,
-            bool trackChanges);      
+            bool trackChanges);
+        (PlanetForUpdateDto planetToPatch, Planet planetEntity) GetPlanetForPatch(Guid planetId, bool planetTrackChanges);
+        void SaveChangesForPatch(PlanetForUpdateDto planetToPatch, Planet planetEntity);
     }
 }

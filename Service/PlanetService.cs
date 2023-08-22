@@ -101,5 +101,22 @@ namespace Service
             _mapper.Map(planetForUpdate, planetEntity);
             _repository.Save();
         }
+
+        public (PlanetForUpdateDto, Planet) GetPlanetForPatch(Guid planetId, bool planetTrackChanges)
+        {
+            var planetEntity = _repository.Planet.GetPlanet(planetId, planetTrackChanges);
+            if (planetEntity is null)
+                throw new PlanetNotFoundException(planetId);
+
+            var planetToPatch = _mapper.Map<PlanetForUpdateDto>(planetEntity);
+
+            return (planetToPatch, planetEntity);
+        }
+
+        public void SaveChangesForPatch(PlanetForUpdateDto planetToPatch, Planet planetEntity)
+        {
+            _mapper.Map(planetToPatch, planetEntity);
+            _repository.Save();
+        }
     }
 }
