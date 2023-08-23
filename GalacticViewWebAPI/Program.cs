@@ -13,6 +13,7 @@ services.AddAuthorization();
 
 services.ConfigureCors();
 services.ConfigureIISIntegration();
+
 services.ConfigureLoggerService();
 services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();

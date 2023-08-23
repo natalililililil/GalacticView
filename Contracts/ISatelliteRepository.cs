@@ -9,8 +9,8 @@ namespace Contracts
 {
     public interface ISatelliteRepository
     {
-        IEnumerable<Satellite> GetSetellites(Guid planetId, bool trackChanges);
-        Satellite GetSetellite(Guid planetId, Guid id, bool trackChanges);
+        Task<IEnumerable<Satellite>> GetSetellitesAsync(Guid planetId, bool trackChanges);
+        Task<Satellite> GetSetelliteAsync(Guid planetId, Guid id, bool trackChanges);
         void CreateSatelliteForPlanet(Guid planetId, Satellite satellite);
         void DeleteSatellite(Satellite satellite);
     }

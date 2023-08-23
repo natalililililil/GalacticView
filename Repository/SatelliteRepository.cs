@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Contracts;
-using Entities;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -17,11 +14,11 @@ namespace Repository
 
         }
 
-        public IEnumerable<Satellite> GetSetellites(Guid planetId, bool trackChanges) =>
-            FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToList();
+        public async Task<IEnumerable<Satellite>> GetSetellitesAsync(Guid planetId, bool trackChanges) =>
+            await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToListAsync();
 
-        public Satellite GetSetellite(Guid planetId, Guid id, bool trackChanges) =>
-            FindByCondition(s => s.PlanetId.Equals(planetId) && s.Id.Equals(id), trackChanges).SingleOrDefault();
+        public async Task<Satellite> GetSetelliteAsync(Guid planetId, Guid id, bool trackChanges) =>
+            await FindByCondition(s => s.PlanetId.Equals(planetId) && s.Id.Equals(id), trackChanges).SingleOrDefaultAsync();
 
         public void CreateSatelliteForPlanet(Guid planetId, Satellite satellite)
         {

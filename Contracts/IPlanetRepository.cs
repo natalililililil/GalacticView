@@ -4,10 +4,10 @@ namespace Contracts
 {
     public interface IPlanetRepository
     {
-        IEnumerable<Planet> GetAllPlanets(bool trackChanges);
-        Planet GetPlanet(Guid planetId, bool trackChanges);
+        Task<IEnumerable<Planet>> GetAllPlanetsAsync(bool trackChanges);
+        Task<Planet> GetPlanetAsync(Guid planetId, bool trackChanges);
         void CreatePlanet(Planet planet);
-        IEnumerable<Planet> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
+        Task<IEnumerable<Planet>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
         void DeletePlanet(Planet planet);
     }
 }

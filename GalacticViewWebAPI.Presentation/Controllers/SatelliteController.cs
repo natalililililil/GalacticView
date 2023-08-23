@@ -17,21 +17,21 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSatellitesForPlanet(Guid planetId)
+        public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId)
         {
-            var satellites = _service.SatelliteService.GetSatellite(planetId, trackChanges: false);
+            var satellites = await _service.SatelliteService.GetSatelliteAsync(planetId, trackChanges: false);
             return Ok(satellites);
         }
 
         [HttpGet("{id:guid}", Name = "GetSatelliteForPlanet")]
-        public IActionResult GetSatelliteForPlanet(Guid planetId, Guid id)
+        public async Task<IActionResult> GetSatelliteForPlanet(Guid planetId, Guid id)
         {
-            var satellite = _service.SatelliteService.GetSatellite(planetId, id, trackChanges: false);
+            var satellite = await _service.SatelliteService.GetSatelliteAsync(planetId, id, trackChanges: false);
             return Ok(satellite);
         }
 
         [HttpPost]
-        public IActionResult CreateSatelliteForPlanet(Guid planetId, [FromBody] SatelliteForCreationDto satellite)
+        public async Task<IActionResult> CreateSatelliteForPlanet(Guid planetId, [FromBody] SatelliteForCreationDto satellite)
         {
             if (satellite is null)
                 return BadRequest("SatelliteForCreationDto is null");
@@ -39,20 +39,20 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var satelliteToReturn = _service.SatelliteService.CreateSatelliteForPlanet(planetId, satellite, trackChanges: false);
+            var satelliteToReturn = await _service.SatelliteService.CreateSatelliteForPlanetAsync(planetId, satellite, trackChanges: false);
 
             return CreatedAtRoute("GetSatelliteForPlanet", new { planetId, id = satelliteToReturn.Id}, satelliteToReturn);
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult DeleteSatelliteForPlanet(Guid planetId, Guid id)
+        public async Task<IActionResult> DeleteSatelliteForPlanet(Guid planetId, Guid id)
         {
-            _service.SatelliteService.DeleteSatelliteForPlanet(planetId, id, trackChanges: false);
+            await _service.SatelliteService.DeleteSatelliteForPlanetAsync(planetId, id, trackChanges: false);
             return NoContent();
         }
 
         [HttpPut("{id:guid}")]
-        public IActionResult UpdateSatelliteForPlanet(Guid planetId, Guid id,
+        public async Task<IActionResult> UpdateSatelliteForPlanet(Guid planetId, Guid id,
             [FromBody] SatelliteForUpdateDto satellite)
         {
             if (satellite is null)
@@ -61,20 +61,20 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            _service.SatelliteService.UpdateSatelliteForPlanet(planetId, id, satellite,
+            await _service.SatelliteService.UpdateSatelliteForPlanetAsync(planetId, id, satellite,
                 planetTrackChanges: false, satTrackChanges: true);
 
             return NoContent();
         }
 
         [HttpPatch("{id:guid}")]
-        public IActionResult PartiallyUpdateSatelliteForPlanet(Guid planetId, Guid id,
+        public async Task<IActionResult> PartiallyUpdateSatelliteForPlanet(Guid planetId, Guid id,
             [FromBody] JsonPatchDocument<SatelliteForUpdateDto> patchDoc)
         {
             if (patchDoc is null)
                 return BadRequest("patchDoc object sent from client is null.");
 
-            var result = _service.SatelliteService.GetSatelliteForPatch(planetId, id, planetTrackChanges: false, 
+            var result = await _service.SatelliteService.GetSatelliteForPatchAsync(planetId, id, planetTrackChanges: false, 
                 satTrackChanges: true);
 
             patchDoc.ApplyTo(result.satelliteToPatch, ModelState);
@@ -83,7 +83,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            _service.SatelliteService.SaveChangesForPatch(result.satelliteToPatch, result.satelliteEntity);
+            await _service.SatelliteService.SaveChangesForPatchAsync(result.satelliteToPatch, result.satelliteEntity);
 
             return NoContent();
         }

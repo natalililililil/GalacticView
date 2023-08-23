@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Contracts;
-using Entities;
+﻿using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -17,16 +12,16 @@ namespace Repository
 
         }
 
-        public IEnumerable<Planet> GetAllPlanets(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+        public async Task<IEnumerable<Planet>> GetAllPlanetsAsync(bool trackChanges) =>
+            await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
 
-        public Planet GetPlanet(Guid planetId, bool trackChanges) =>
-            FindByCondition(с => с.Id.Equals(planetId), trackChanges).SingleOrDefault();
+        public async Task<Planet> GetPlanetAsync(Guid planetId, bool trackChanges) =>
+            await FindByCondition(с => с.Id.Equals(planetId), trackChanges).SingleOrDefaultAsync();
 
         public void CreatePlanet(Planet planet) => Create(planet);
 
-        public IEnumerable<Planet> GetByIds(IEnumerable<Guid> ids, bool trackChanges) =>
-            FindByCondition(x => ids.Contains(x.Id), trackChanges).ToList();
+        public async Task<IEnumerable<Planet>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges) =>
+            await FindByCondition(x => ids.Contains(x.Id), trackChanges).ToListAsync();
 
         public void DeletePlanet(Planet planet) => Delete(planet);
     }

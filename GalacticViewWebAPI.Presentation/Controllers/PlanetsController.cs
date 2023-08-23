@@ -18,29 +18,29 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetPlanets()
+        public async Task<IActionResult> GetPlanets()
         {
-            var planets = _service.PlanetService.GetAllPlanets(trachChanges: false);
+            var planets = await _service.PlanetService.GetAllPlanetsAsync(trachChanges: false);
             return Ok(planets);
         }
 
         [HttpGet("{id:guid}", Name = "PlanetById")]
-        public IActionResult GetPlanet(Guid id)
+        public async Task<IActionResult> GetPlanet(Guid id)
         {
-            var planet = _service.PlanetService.GetPlanet(id, trackChanges: false);
+            var planet = await _service.PlanetService.GetPlanetAsync(id, trackChanges: false);
             return Ok(planet);
         }
 
         [HttpGet("collection/({ids})", Name = "PlanetCollection")]
-        public IActionResult GetPlanetCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
+        public async Task<IActionResult> GetPlanetCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
         {
-            var planets = _service.PlanetService.GetByIds(ids, trackChanges: false);
+            var planets = await _service.PlanetService.GetByIdsAsync(ids, trackChanges: false);
 
             return Ok(planets);
         }
 
         [HttpPost]
-        public IActionResult CreatePlanet([FromBody] PlanetForCreationDto planet)
+        public async Task<IActionResult> CreatePlanet([FromBody] PlanetForCreationDto planet)
         {
             if (planet is null)
                 return BadRequest("PlanetForCreationDto object is null");
@@ -48,31 +48,31 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var createdPlanet = _service.PlanetService.CreatePlanet(planet);
+            var createdPlanet = await _service.PlanetService.CreatePlanetAsync(planet);
 
             return CreatedAtRoute("PlanetById", new { id = createdPlanet.Id }, createdPlanet);
         }
 
         [HttpPost("collection")]
-        public IActionResult CreatePlanetCollection([FromBody] IEnumerable<PlanetForCreationDto> planetColletion)
+        public async Task<IActionResult> CreatePlanetCollection([FromBody] IEnumerable<PlanetForCreationDto> planetColletion)
         {
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var result = _service.PlanetService.CreatePlanetCollecton(planetColletion);
+            var result = await _service.PlanetService.CreatePlanetCollectonAsync(planetColletion);
 
             return CreatedAtRoute("PlanetCollection", new {result.ids}, result.planets);
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult DeletePlanet(Guid id)
+        public async Task<IActionResult> DeletePlanet(Guid id)
         {
-            _service.PlanetService.DeletePlanet(id, trackChanges: false);
+            await _service.PlanetService.DeletePlanetAsync(id, trackChanges: false);
             return NoContent();
         }
 
         [HttpPut("{id:guid}")]
-        public IActionResult UpdatePlanet(Guid id, [FromBody] PlanetForUpdateDto planet)
+        public async Task<IActionResult> UpdatePlanet(Guid id, [FromBody] PlanetForUpdateDto planet)
         {
             if (planet is null)
                 return BadRequest("PlanetForUpdateDto is null.");
@@ -80,18 +80,18 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            _service.PlanetService.UpdatePlanet(id, planet, trackChanges: true);
+            await _service.PlanetService.UpdatePlanetAsync(id, planet, trackChanges: true);
 
             return NoContent();
         }
 
         [HttpPatch("{id:guid}")]
-        public IActionResult PartiallyUpdatePlanet(Guid id, [FromBody] JsonPatchDocument<PlanetForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdatePlanet(Guid id, [FromBody] JsonPatchDocument<PlanetForUpdateDto> patchDoc)
         {
             if (patchDoc is null)
                 return BadRequest("patchDoc object sent from client is null.");
 
-            var result = _service.PlanetService.GetPlanetForPatch(id, planetTrackChanges: true);
+            var result = await _service.PlanetService.GetPlanetForPatchAsync(id, planetTrackChanges: true);
 
             patchDoc.ApplyTo(result.planetToPatch, ModelState);
 
@@ -99,7 +99,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState); 
 
-            _service.PlanetService.SaveChangesForPatch(result.planetToPatch, result.planetEntity);
+            await _service.PlanetService.SaveChangesForPatchAsync(result.planetToPatch, result.planetEntity);
 
             return NoContent();
         }

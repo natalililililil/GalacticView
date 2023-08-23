@@ -18,17 +18,17 @@ namespace Service
             _mapper = mapper;
         }
 
-        public IEnumerable<PlanetDto> GetAllPlanets(bool trachChanges)
+        public async Task<IEnumerable<PlanetDto>> GetAllPlanetsAsync(bool trachChanges)
         {
-            var planets = _repository.Planet.GetAllPlanets(trachChanges);
+            var planets = await _repository.Planet.GetAllPlanetsAsync(trachChanges);
 
             var planetsDto = _mapper.Map<IEnumerable<PlanetDto>>(planets);
             return planetsDto;
         }
 
-        public PlanetDto GetPlanet(Guid id, bool trackChanges)
+        public async Task<PlanetDto> GetPlanetAsync(Guid id, bool trackChanges)
         {
-            var planet = _repository.Planet.GetPlanet(id, trackChanges);
+            var planet = await _repository.Planet.GetPlanetAsync(id, trackChanges);
             if (planet is null)
                 throw new PlanetNotFoundException(id);
 
@@ -36,23 +36,23 @@ namespace Service
             return planetDto;
         }
 
-        public PlanetDto CreatePlanet(PlanetForCreationDto planet)
+        public async Task<PlanetDto> CreatePlanetAsync(PlanetForCreationDto planet)
         {
             var planetEntity = _mapper.Map<Planet>(planet);
 
             _repository.Planet.CreatePlanet(planetEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
 
             var planetToReturn = _mapper.Map<PlanetDto>(planetEntity);
             return planetToReturn;
         }
 
-        public IEnumerable<PlanetDto> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
+        public async Task<IEnumerable<PlanetDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
         {
             if (ids is null)
                 throw new IdParametersBadRequestException();
 
-            var planetEntities = _repository.Planet.GetByIds(ids, trackChanges);
+            var planetEntities = await _repository.Planet.GetByIdsAsync(ids, trackChanges);
 
             if (ids.Count() != planetEntities.Count())
                 throw new CollectionByIdsBadRequestException();
@@ -62,7 +62,7 @@ namespace Service
             return planetsToReturn;
         }
 
-        public (IEnumerable<PlanetDto> planets, string ids) CreatePlanetCollecton
+        public async Task<(IEnumerable<PlanetDto> planets, string ids)> CreatePlanetCollectonAsync
             (IEnumerable<PlanetForCreationDto> planetColletion)
         {
             if (planetColletion is null)
@@ -74,7 +74,7 @@ namespace Service
                 _repository.Planet.CreatePlanet(planet);
             }
 
-            _repository.Save();
+            await _repository.SaveAsync();
 
             var planetCollectionToReturn = _mapper.Map<IEnumerable<PlanetDto>>(planetEntities);
             var ids = string.Join(",", planetCollectionToReturn.Select(p => p.Id));
@@ -82,29 +82,29 @@ namespace Service
             return (planets: planetCollectionToReturn, ids: ids);
         }
 
-        public void DeletePlanet(Guid planetId, bool trackChanges)
+        public async Task DeletePlanetAsync(Guid planetId, bool trackChanges)
         {
-            var planet = _repository.Planet.GetPlanet(planetId, trackChanges);
+            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
             if (planet is null)
                 throw new PlanetNotFoundException(planetId);
 
             _repository.Planet.DeletePlanet(planet);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
 
-        public void UpdatePlanet(Guid planetId, PlanetForUpdateDto planetForUpdate, bool trackChanges)
+        public async Task UpdatePlanetAsync(Guid planetId, PlanetForUpdateDto planetForUpdate, bool trackChanges)
         {
-            var planetEntity = _repository.Planet.GetPlanet(planetId, trackChanges);
+            var planetEntity = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
             if (planetEntity is null)
                 throw new PlanetNotFoundException(planetId);
 
             _mapper.Map(planetForUpdate, planetEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
 
-        public (PlanetForUpdateDto, Planet) GetPlanetForPatch(Guid planetId, bool planetTrackChanges)
+        public async Task<(PlanetForUpdateDto, Planet)> GetPlanetForPatchAsync(Guid planetId, bool planetTrackChanges)
         {
-            var planetEntity = _repository.Planet.GetPlanet(planetId, planetTrackChanges);
+            var planetEntity = await _repository.Planet.GetPlanetAsync(planetId, planetTrackChanges);
             if (planetEntity is null)
                 throw new PlanetNotFoundException(planetId);
 
@@ -113,10 +113,10 @@ namespace Service
             return (planetToPatch, planetEntity);
         }
 
-        public void SaveChangesForPatch(PlanetForUpdateDto planetToPatch, Planet planetEntity)
+        public async Task SaveChangesForPatchAsync(PlanetForUpdateDto planetToPatch, Planet planetEntity)
         {
             _mapper.Map(planetToPatch, planetEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
     }
 }

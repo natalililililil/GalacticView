@@ -4,6 +4,6 @@
     {
         IPlanetRepository Planet { get; }
         ISatelliteRepository Satellite { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

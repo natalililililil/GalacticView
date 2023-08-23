@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Contracts;
-using Entities;
+﻿using Contracts;
 
 namespace Repository
 {
@@ -26,6 +20,6 @@ namespace Repository
 
         public ISatelliteRepository Satellite => _satelliteRepository.Value;
 
-        public void Save() => _repositoryContext.SaveChanges();
+        public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }
 }
