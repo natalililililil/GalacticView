@@ -18,11 +18,9 @@ namespace Service
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<SatelliteDto>> GetSatelliteAsync(Guid planetId, bool trackChanges)
+        public async Task<IEnumerable<SatelliteDto>> GetSatellitesAsync(Guid planetId, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            await CheckIfPlanetExists(planetId, trackChanges);
 
             var satellitesFromDb = await _repository.Satellite.GetSetellitesAsync(planetId, trackChanges);
             
@@ -32,13 +30,9 @@ namespace Service
 
         public async Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            await CheckIfPlanetExists(planetId, trackChanges);
 
-            var satelliteDb = await _repository.Satellite.GetSetelliteAsync(planetId, id, trackChanges);
-            if (satelliteDb is null)
-                throw new SatelliteNotFoundException(id);
+            var satelliteDb = await GetSatelliteFromPlanetAndCheckIfExists(planetId, id, trackChanges);
 
             var satellite = _mapper.Map<SatelliteDto>(satelliteDb);
             return satellite;
@@ -46,9 +40,7 @@ namespace Service
 
         public async Task<SatelliteDto> CreateSatelliteForPlanetAsync(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            await CheckIfPlanetExists(planetId, trackChanges);
 
             var satelliteEntity = _mapper.Map<Satellite>(satelliteForCreation);
 
@@ -62,13 +54,9 @@ namespace Service
 
         public async Task DeleteSatelliteForPlanetAsync(Guid planetId, Guid id, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            await CheckIfPlanetExists(planetId, trackChanges);
 
-            var satellite = await _repository.Satellite.GetSetelliteAsync(planetId, id, trackChanges);
-            if (satellite is null)
-                throw new SatelliteNotFoundException(id);
+            var satellite = await GetSatelliteFromPlanetAndCheckIfExists(planetId, id, trackChanges);
 
             _repository.Satellite.DeleteSatellite(satellite);
             await _repository.SaveAsync();
@@ -77,13 +65,9 @@ namespace Service
         public async Task UpdateSatelliteForPlanetAsync(Guid planetId, Guid id, SatelliteForUpdateDto satelliteForUpdate, 
             bool planetTrackChanges, bool satTrackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, planetTrackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            await CheckIfPlanetExists(planetId, planetTrackChanges);
 
-            var satelliteEntity = await _repository.Satellite.GetSetelliteAsync(planetId, id, satTrackChanges);
-            if (satelliteEntity is null)
-                throw new SatelliteNotFoundException(id);
+            var satelliteEntity = await GetSatelliteFromPlanetAndCheckIfExists(planetId, id, satTrackChanges);
 
             _mapper.Map(satelliteForUpdate, satelliteEntity);
             await _repository.SaveAsync();
@@ -92,17 +76,29 @@ namespace Service
         public async Task<(SatelliteForUpdateDto satelliteToPatch, Satellite satelliteEntity)> GetSatelliteForPatchAsync(Guid planetId,
             Guid id, bool planetTrackChanges, bool satTrackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, planetTrackChanges);
+            await CheckIfPlanetExists(planetId, planetTrackChanges);
+
+            var satelliteDb = await GetSatelliteFromPlanetAndCheckIfExists(planetId, id, satTrackChanges);
+
+            var satelliteToPatch = _mapper.Map<SatelliteForUpdateDto>(satelliteDb);
+
+            return (satelliteToPatch, satelliteDb);
+        }
+
+        private async Task CheckIfPlanetExists(Guid planetId, bool trackChanges)
+        {
+            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
             if (planet is null)
                 throw new PlanetNotFoundException(planetId);
+        }
 
-            var satelliteEntity = await _repository.Satellite.GetSetelliteAsync(planetId, id, satTrackChanges);
-            if (satelliteEntity is null)
+        private async Task<Satellite> GetSatelliteFromPlanetAndCheckIfExists(Guid planetId, Guid id, bool trackChanges)
+        {
+            var satelliteDb = await _repository.Satellite.GetSetelliteAsync(planetId, id, trackChanges);
+            if (satelliteDb is null)
                 throw new SatelliteNotFoundException(id);
 
-            var satelliteToPatch = _mapper.Map<SatelliteForUpdateDto>(satelliteEntity);
-
-            return (satelliteToPatch, satelliteEntity);
+            return satelliteDb;
         }
 
         public async Task SaveChangesForPatchAsync(SatelliteForUpdateDto satelliteForPatch, Satellite satelliteEntity)

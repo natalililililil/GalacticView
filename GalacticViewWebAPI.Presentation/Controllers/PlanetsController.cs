@@ -1,4 +1,5 @@
-﻿using GalacticViewWebAPI.Presentation.ModelBinders;
+﻿using GalacticViewWebAPI.ActionFilters;
+using GalacticViewWebAPI.Presentation.ModelBinders;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
@@ -40,14 +41,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreatePlanet([FromBody] PlanetForCreationDto planet)
         {
-            if (planet is null)
-                return BadRequest("PlanetForCreationDto object is null");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             var createdPlanet = await _service.PlanetService.CreatePlanetAsync(planet);
 
             return CreatedAtRoute("PlanetById", new { id = createdPlanet.Id }, createdPlanet);
@@ -72,14 +68,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> UpdatePlanet(Guid id, [FromBody] PlanetForUpdateDto planet)
         {
-            if (planet is null)
-                return BadRequest("PlanetForUpdateDto is null.");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             await _service.PlanetService.UpdatePlanetAsync(id, planet, trackChanges: true);
 
             return NoContent();

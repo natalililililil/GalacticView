@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
+﻿using GalacticViewWebAPI.ActionFilters;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -19,7 +20,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId)
         {
-            var satellites = await _service.SatelliteService.GetSatelliteAsync(planetId, trackChanges: false);
+            var satellites = await _service.SatelliteService.GetSatellitesAsync(planetId, trackChanges: false);
             return Ok(satellites);
         }
 
@@ -31,14 +32,9 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateSatelliteForPlanet(Guid planetId, [FromBody] SatelliteForCreationDto satellite)
         {
-            if (satellite is null)
-                return BadRequest("SatelliteForCreationDto is null");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             var satelliteToReturn = await _service.SatelliteService.CreateSatelliteForPlanetAsync(planetId, satellite, trackChanges: false);
 
             return CreatedAtRoute("GetSatelliteForPlanet", new { planetId, id = satelliteToReturn.Id}, satelliteToReturn);
@@ -52,15 +48,10 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> UpdateSatelliteForPlanet(Guid planetId, Guid id,
             [FromBody] SatelliteForUpdateDto satellite)
         {
-            if (satellite is null)
-                return BadRequest("SatelliteForUpdateDto object is null");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             await _service.SatelliteService.UpdateSatelliteForPlanetAsync(planetId, id, satellite,
                 planetTrackChanges: false, satTrackChanges: true);
 

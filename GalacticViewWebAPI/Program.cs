@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
-
+using GalacticViewWebAPI.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -32,6 +32,7 @@ new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
 .GetRequiredService<IOptions<MvcOptions>>().Value.InputFormatters
 .OfType<NewtonsoftJsonPatchInputFormatter>().First();
 
+services.AddScoped<ValidationFilterAttribute>();
 
 services.AddControllers(config =>
 {

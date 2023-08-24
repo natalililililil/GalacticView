@@ -28,9 +28,7 @@ namespace Service
 
         public async Task<PlanetDto> GetPlanetAsync(Guid id, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(id, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(id);
+            var planet = await GetPlanetAndCheckIfItExists(id, trackChanges);
 
             var planetDto = _mapper.Map<PlanetDto>(planet);
             return planetDto;
@@ -84,9 +82,7 @@ namespace Service
 
         public async Task DeletePlanetAsync(Guid planetId, bool trackChanges)
         {
-            var planet = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planet is null)
-                throw new PlanetNotFoundException(planetId);
+            var planet = await GetPlanetAndCheckIfItExists(planetId, trackChanges);
 
             _repository.Planet.DeletePlanet(planet);
             await _repository.SaveAsync();
@@ -94,23 +90,27 @@ namespace Service
 
         public async Task UpdatePlanetAsync(Guid planetId, PlanetForUpdateDto planetForUpdate, bool trackChanges)
         {
-            var planetEntity = await _repository.Planet.GetPlanetAsync(planetId, trackChanges);
-            if (planetEntity is null)
-                throw new PlanetNotFoundException(planetId);
+            var planet = await GetPlanetAndCheckIfItExists(planetId, trackChanges);
 
-            _mapper.Map(planetForUpdate, planetEntity);
+            _mapper.Map(planetForUpdate, planet);
             await _repository.SaveAsync();
         }
 
         public async Task<(PlanetForUpdateDto, Planet)> GetPlanetForPatchAsync(Guid planetId, bool planetTrackChanges)
         {
-            var planetEntity = await _repository.Planet.GetPlanetAsync(planetId, planetTrackChanges);
+            var planet = await GetPlanetAndCheckIfItExists(planetId, planetTrackChanges);
+            var planetToPatch = _mapper.Map<PlanetForUpdateDto>(planet);
+
+            return (planetToPatch, planet);
+        }
+
+        private async Task<Planet> GetPlanetAndCheckIfItExists(Guid id, bool trackChanges)
+        {
+            var planetEntity = await _repository.Planet.GetPlanetAsync(id, trackChanges);
             if (planetEntity is null)
-                throw new PlanetNotFoundException(planetId);
+                throw new PlanetNotFoundException(id);
 
-            var planetToPatch = _mapper.Map<PlanetForUpdateDto>(planetEntity);
-
-            return (planetToPatch, planetEntity);
+            return planetEntity;
         }
 
         public async Task SaveChangesForPatchAsync(PlanetForUpdateDto planetToPatch, Planet planetEntity)
