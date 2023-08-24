@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
+using System.Text.Json;
 
 namespace GalacticViewWebAPI.Presentation.Controllers
 {
@@ -18,10 +20,12 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId)
+        public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId, [FromQuery] SatelliteParameters satelliteParameters)
         {
-            var satellites = await _service.SatelliteService.GetSatellitesAsync(planetId, trackChanges: false);
-            return Ok(satellites);
+            var pagedResult = await _service.SatelliteService.GetSatellitesAsync(planetId, satelliteParameters, trackChanges: false);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+            return Ok(pagedResult.satellites);
         }
 
         [HttpGet("{id:guid}", Name = "GetSatelliteForPlanet")]

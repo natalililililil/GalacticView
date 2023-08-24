@@ -1,11 +1,12 @@
 ﻿using Entities.Models;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service.Contracts
 {
     public interface ISatelliteService
     {
-        Task<IEnumerable<SatelliteDto>> GetSatellitesAsync(Guid planetId, bool trackChanges);
+        Task<(IEnumerable<SatelliteDto> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges);
         Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges);
         Task<SatelliteDto> CreateSatelliteForPlanetAsync(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges);
         Task DeleteSatelliteForPlanetAsync(Guid planetId, Guid id, bool trackChanges);

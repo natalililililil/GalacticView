@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
 
 namespace Repository
 {
@@ -14,8 +15,13 @@ namespace Repository
 
         }
 
-        public async Task<IEnumerable<Satellite>> GetSetellitesAsync(Guid planetId, bool trackChanges) =>
-            await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToListAsync();
+        public async Task<PagedList<Satellite>> GetSetellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
+        {
+            var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToListAsync();
+
+            return PagedList<Satellite>.ToPagedList(satellites, satelliteParameters.PageNumber, satelliteParameters.PageSize);
+        }
+            
 
         public async Task<Satellite> GetSetelliteAsync(Guid planetId, Guid id, bool trackChanges) =>
             await FindByCondition(s => s.PlanetId.Equals(planetId) && s.Id.Equals(id), trackChanges).SingleOrDefaultAsync();

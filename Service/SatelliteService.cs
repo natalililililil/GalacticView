@@ -4,6 +4,7 @@ using AutoMapper;
 using Shared.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
+using Shared.RequestFeatures;
 
 namespace Service
 {
@@ -18,14 +19,14 @@ namespace Service
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<SatelliteDto>> GetSatellitesAsync(Guid planetId, bool trackChanges)
+        public async Task<(IEnumerable<SatelliteDto> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
         {
             await CheckIfPlanetExists(planetId, trackChanges);
 
-            var satellitesFromDb = await _repository.Satellite.GetSetellitesAsync(planetId, trackChanges);
+            var satellitesWithMetaData = await _repository.Satellite.GetSetellitesAsync(planetId, satelliteParameters, trackChanges);
             
-            var satellitesDto = _mapper.Map<IEnumerable<SatelliteDto>>(satellitesFromDb);
-            return satellitesDto;
+            var satellitesDto = _mapper.Map<IEnumerable<SatelliteDto>>(satellitesWithMetaData);
+            return (satellites: satellitesDto, metaData: satellitesWithMetaData.MetaData);
         }
 
         public async Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges)
