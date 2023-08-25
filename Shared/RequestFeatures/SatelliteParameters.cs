@@ -8,5 +8,9 @@ namespace Shared.RequestFeatures
 {
     public class SatelliteParameters : RequestParameters
     {
+        public double MinDistanceFromThePlanet { get; set; }
+        public double MaxDistanceFromThePlanet { get; set; } = double.MaxValue;
+
+        public bool ValidDistanceFromThePlanetRange => MaxDistanceFromThePlanet > MinDistanceFromThePlanet;
     }
 }

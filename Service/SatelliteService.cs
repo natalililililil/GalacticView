@@ -21,6 +21,9 @@ namespace Service
 
         public async Task<(IEnumerable<SatelliteDto> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
         {
+            if (!satelliteParameters.ValidDistanceFromThePlanetRange)
+                throw new MaxDistanceFromThePlanetBadRequestException();
+
             await CheckIfPlanetExists(planetId, trackChanges);
 
             var satellitesWithMetaData = await _repository.Satellite.GetSetellitesAsync(planetId, satelliteParameters, trackChanges);

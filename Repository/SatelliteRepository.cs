@@ -17,7 +17,9 @@ namespace Repository
 
         public async Task<PagedList<Satellite>> GetSetellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
         {
-            var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges).OrderBy(s => s.Name).ToListAsync();
+            var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId) && (s.DistanceFromThePlanet 
+            >= satelliteParameters.MinDistanceFromThePlanet && s.DistanceFromThePlanet <= satelliteParameters.MaxDistanceFromThePlanet), trackChanges)
+            .OrderBy(s => s.Name).ToListAsync();
 
             return PagedList<Satellite>.ToPagedList(satellites, satelliteParameters.PageNumber, satelliteParameters.PageSize);
         }
