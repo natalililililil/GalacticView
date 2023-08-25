@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 
 namespace Repository
@@ -17,8 +18,9 @@ namespace Repository
 
         public async Task<PagedList<Satellite>> GetSetellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
         {
-            var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId) && (s.DistanceFromThePlanet 
-            >= satelliteParameters.MinDistanceFromThePlanet && s.DistanceFromThePlanet <= satelliteParameters.MaxDistanceFromThePlanet), trackChanges)
+            var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges)
+            .FilterSatellites(satelliteParameters.MinDistanceFromThePlanet, satelliteParameters.MaxDistanceFromThePlanet)
+            .Search(satelliteParameters.SearchTerm)
             .OrderBy(s => s.Name).ToListAsync();
 
             return PagedList<Satellite>.ToPagedList(satellites, satelliteParameters.PageNumber, satelliteParameters.PageSize);

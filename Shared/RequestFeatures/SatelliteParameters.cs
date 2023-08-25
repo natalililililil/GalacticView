@@ -12,5 +12,7 @@ namespace Shared.RequestFeatures
         public double MaxDistanceFromThePlanet { get; set; } = double.MaxValue;
 
         public bool ValidDistanceFromThePlanetRange => MaxDistanceFromThePlanet > MinDistanceFromThePlanet;
+        
+        public string? SearchTerm { get; set; }
     }
 }
