@@ -5,6 +5,7 @@ using Shared.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
 using Shared.RequestFeatures;
+using System.Dynamic;
 
 namespace Service
 {
@@ -12,14 +13,17 @@ namespace Service
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IDataShaper<SatelliteDto> _dataShaper;
 
-        public SatelliteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        public SatelliteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, 
+            IDataShaper<SatelliteDto> dataShaper)
         {
             _repository = repository;
             _mapper = mapper;
+            _dataShaper = dataShaper;
         }
 
-        public async Task<(IEnumerable<SatelliteDto> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
+        public async Task<(IEnumerable<ExpandoObject> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
         {
             if (!satelliteParameters.ValidDistanceFromThePlanetRange)
                 throw new MaxDistanceFromThePlanetBadRequestException();
@@ -29,7 +33,9 @@ namespace Service
             var satellitesWithMetaData = await _repository.Satellite.GetSetellitesAsync(planetId, satelliteParameters, trackChanges);
             
             var satellitesDto = _mapper.Map<IEnumerable<SatelliteDto>>(satellitesWithMetaData);
-            return (satellites: satellitesDto, metaData: satellitesWithMetaData.MetaData);
+
+            var shapedData = _dataShaper.ShapeData(satellitesDto, satelliteParameters.Fields);
+            return (satellites: shapedData, metaData: satellitesWithMetaData.MetaData);
         }
 
         public async Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges)

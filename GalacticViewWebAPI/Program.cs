@@ -5,6 +5,8 @@ using NLog;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using GalacticViewWebAPI.ActionFilters;
+using Shared.DataTransferObjects;
+using Service.DataShaping;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -33,6 +35,7 @@ new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
 .OfType<NewtonsoftJsonPatchInputFormatter>().First();
 
 services.AddScoped<ValidationFilterAttribute>();
+services.AddScoped<IDataShaper<SatelliteDto>, DataShaper<SatelliteDto>>();
 
 services.AddControllers(config =>
 {
