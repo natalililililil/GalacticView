@@ -8,6 +8,7 @@ namespace Shared.RequestFeatures
 {
     public class SatelliteParameters : RequestParameters
     {
+        public SatelliteParameters() => OrderBy = "name";
         public double MinDistanceFromThePlanet { get; set; }
         public double MaxDistanceFromThePlanet { get; set; } = double.MaxValue;
 

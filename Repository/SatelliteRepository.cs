@@ -21,7 +21,7 @@ namespace Repository
             var satellites = await FindByCondition(s => s.PlanetId.Equals(planetId), trackChanges)
             .FilterSatellites(satelliteParameters.MinDistanceFromThePlanet, satelliteParameters.MaxDistanceFromThePlanet)
             .Search(satelliteParameters.SearchTerm)
-            .OrderBy(s => s.Name).ToListAsync();
+            .Sort(satelliteParameters.OrderBy).ToListAsync();
 
             return PagedList<Satellite>.ToPagedList(satellites, satelliteParameters.PageNumber, satelliteParameters.PageSize);
         }
