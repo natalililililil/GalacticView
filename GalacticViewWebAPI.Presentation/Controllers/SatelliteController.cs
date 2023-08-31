@@ -1,4 +1,6 @@
-﻿using GalacticViewWebAPI.ActionFilters;
+﻿using Entities.LinkModels;
+using GalacticViewWebAPI.ActionFilters;
+using GalacticViewWebAPI.Presentation.ActionFilters;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
@@ -20,12 +22,15 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId, [FromQuery] SatelliteParameters satelliteParameters)
         {
-            var pagedResult = await _service.SatelliteService.GetSatellitesAsync(planetId, satelliteParameters, trackChanges: false);
+            var linkParams = new LinkParameters(satelliteParameters, HttpContext);
+            var result = await _service.SatelliteService.GetSatellitesAsync(planetId, linkParams, trackChanges: false);
 
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
-            return Ok(pagedResult.satellites);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+
+            return result.linkResponse.HasLinks ? Ok(result.linkResponse.LinkedEntities) : Ok(result.linkResponse.ShapedEntities);
         }
 
         [HttpGet("{id:guid}", Name = "GetSatelliteForPlanet")]

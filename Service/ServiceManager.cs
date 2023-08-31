@@ -11,10 +11,10 @@ namespace Service
         private readonly Lazy<ISatelliteService> _satelliteService;
 
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper,
-            IDataShaper<SatelliteDto> dataShaper)
+            ISatelliteLinks satelliteLinks)
         {
             _planetService = new Lazy<IPlanetService>(() => new PlanetService(repositoryManager, logger, mapper));
-            _satelliteService = new Lazy<ISatelliteService>(() => new SatelliteService(repositoryManager, logger, mapper, dataShaper));
+            _satelliteService = new Lazy<ISatelliteService>(() => new SatelliteService(repositoryManager, logger, mapper, satelliteLinks));
         }
 
         public IPlanetService PlanetService => _planetService.Value;

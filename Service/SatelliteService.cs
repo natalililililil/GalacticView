@@ -5,37 +5,41 @@ using Shared.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
 using Shared.RequestFeatures;
-using System.Dynamic;
+using Entities.LinkModels;
 
 namespace Service
 {
     internal sealed class SatelliteService : ISatelliteService
     {
         private readonly IRepositoryManager _repository;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        private readonly IDataShaper<SatelliteDto> _dataShaper;
+        private readonly ISatelliteLinks _satelliteLinks;
 
-        public SatelliteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, 
-            IDataShaper<SatelliteDto> dataShaper)
+        public SatelliteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper,
+            ISatelliteLinks satelliteLinks)
         {
             _repository = repository;
+            _logger = logger;
             _mapper = mapper;
-            _dataShaper = dataShaper;
+            _satelliteLinks = satelliteLinks;
         }
 
-        public async Task<(IEnumerable<ExpandoObject> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges)
+        public async Task<(LinkResponse linkResponse, MetaData metaData)> GetSatellitesAsync(Guid planetId, LinkParameters linkParameters, bool trackChanges)
         {
-            if (!satelliteParameters.ValidDistanceFromThePlanetRange)
+            if (!linkParameters.SatellitesParameters.ValidDistanceFromThePlanetRange)
                 throw new MaxDistanceFromThePlanetBadRequestException();
 
             await CheckIfPlanetExists(planetId, trackChanges);
 
-            var satellitesWithMetaData = await _repository.Satellite.GetSetellitesAsync(planetId, satelliteParameters, trackChanges);
+            var satellitesWithMetaData = await _repository.Satellite.GetSetellitesAsync(planetId, linkParameters.SatellitesParameters, trackChanges);
             
             var satellitesDto = _mapper.Map<IEnumerable<SatelliteDto>>(satellitesWithMetaData);
 
-            var shapedData = _dataShaper.ShapeData(satellitesDto, satelliteParameters.Fields);
-            return (satellites: shapedData, metaData: satellitesWithMetaData.MetaData);
+            var links = _satelliteLinks.TryGenerateLinks(satellitesDto, linkParameters.SatellitesParameters.Fields,
+                planetId, linkParameters.Content);
+
+            return (linkResponse: links, metaData: satellitesWithMetaData.MetaData);
         }
 
         public async Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges)

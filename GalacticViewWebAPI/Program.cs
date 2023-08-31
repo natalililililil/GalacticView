@@ -7,6 +7,8 @@ using Microsoft.Extensions.Options;
 using GalacticViewWebAPI.ActionFilters;
 using Shared.DataTransferObjects;
 using Service.DataShaping;
+using GalacticViewWebAPI.Presentation.ActionFilters;
+using GalacticViewWebAPI.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -27,7 +29,6 @@ services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
-
 NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
 new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
 .Services.BuildServiceProvider()
@@ -36,6 +37,8 @@ new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
 
 services.AddScoped<ValidationFilterAttribute>();
 services.AddScoped<IDataShaper<SatelliteDto>, DataShaper<SatelliteDto>>();
+services.AddScoped<ValidateMediaTypeAttribute>();
+services.AddScoped<ISatelliteLinks, SatelliteLinks>();
 
 services.AddControllers(config =>
 {
@@ -45,6 +48,7 @@ services.AddControllers(config =>
 }).AddXmlDataContractSerializerFormatters()
 .AddCustomCSVFormatter()
 .AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
+services.AddCustomMediaTipe();
 
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 

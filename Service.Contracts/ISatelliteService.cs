@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.LinkModels;
+using Entities.Models;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
 using System.Dynamic;
@@ -7,7 +8,7 @@ namespace Service.Contracts
 {
     public interface ISatelliteService
     {
-        Task<(IEnumerable<ExpandoObject> satellites, MetaData metaData)> GetSatellitesAsync(Guid planetId, SatelliteParameters satelliteParameters, bool trackChanges);
+        Task<(LinkResponse linkResponse, MetaData metaData)> GetSatellitesAsync(Guid planetId, LinkParameters linkParameters, bool trackChanges);
         Task<SatelliteDto> GetSatelliteAsync(Guid planetId, Guid id, bool trackChanges);
         Task<SatelliteDto> CreateSatelliteForPlanetAsync(Guid planetId, SatelliteForCreationDto satelliteForCreation, bool trackChanges);
         Task DeleteSatelliteForPlanetAsync(Guid planetId, Guid id, bool trackChanges);
