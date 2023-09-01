@@ -18,7 +18,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetPlanets")]
         [HttpHead]
         public async Task<IActionResult> GetPlanets()
         {
@@ -41,7 +41,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             return Ok(planets);
         }
 
-        [HttpPost]
+        [HttpPost(Name = "CreatePlanet")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreatePlanet([FromBody] PlanetForCreationDto planet)
         {
