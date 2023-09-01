@@ -22,6 +22,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
+        [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetSatellitesForPlanet(Guid planetId, [FromQuery] SatelliteParameters satelliteParameters)
         {
@@ -86,6 +87,14 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             await _service.SatelliteService.SaveChangesForPatchAsync(result.satelliteToPatch, result.satelliteEntity);
 
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetSatellitesOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST, DELETE, PATCH");
+
+            return Ok();
         }
     }
 }

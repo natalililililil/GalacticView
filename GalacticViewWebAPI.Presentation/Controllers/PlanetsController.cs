@@ -19,6 +19,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         }
 
         [HttpGet]
+        [HttpHead]
         public async Task<IActionResult> GetPlanets()
         {
             var planets = await _service.PlanetService.GetAllPlanetsAsync(trachChanges: false);
@@ -93,6 +94,14 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             await _service.PlanetService.SaveChangesForPatchAsync(result.planetToPatch, result.planetEntity);
 
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetPlanetsOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST, DELETE, PATCH");
+
+            return Ok();
         }
     }
 }
