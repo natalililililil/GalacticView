@@ -23,6 +23,7 @@ services.ConfigureSqlContext(builder.Configuration);
 services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
 services.AddAutoMapper(typeof(Program));
+services.ConfigureVersioning();
 
 services.Configure<ApiBehaviorOptions>(options =>
 {
