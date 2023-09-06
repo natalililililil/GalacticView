@@ -1,5 +1,6 @@
 ﻿using GalacticViewWebAPI.ActionFilters;
 using GalacticViewWebAPI.Presentation.ModelBinders;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;

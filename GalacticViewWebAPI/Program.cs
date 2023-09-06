@@ -9,6 +9,7 @@ using Shared.DataTransferObjects;
 using Service.DataShaping;
 using GalacticViewWebAPI.Presentation.ActionFilters;
 using GalacticViewWebAPI.Utility;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -24,6 +25,12 @@ services.ConfigureRepositoryManager();
 services.ConfigureServiceManager();
 services.AddAutoMapper(typeof(Program));
 services.ConfigureVersioning();
+services.ConfigureResponseCaching();
+services.ConfigureHttpCacheHeaders();
+services.AddMemoryCache();
+services.ConfigureRateLimitingOptions();
+services.AddHttpContextAccessor();
+
 
 services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -46,6 +53,7 @@ services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
     config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
+    config.CacheProfiles.Add("120SecondsDuration", new CacheProfile{ Duration = 120});
 }).AddXmlDataContractSerializerFormatters()
 .AddCustomCSVFormatter()
 .AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
@@ -69,7 +77,10 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
 
+app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
 
 app.UseAuthorization();
 
