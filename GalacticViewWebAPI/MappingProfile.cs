@@ -21,6 +21,8 @@ namespace GalacticViewWebAPI
             CreateMap<SatelliteForUpdateDto, Satellite>().ReverseMap();
 
             CreateMap<PlanetForUpdateDto, Planet>().ReverseMap();
+
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }

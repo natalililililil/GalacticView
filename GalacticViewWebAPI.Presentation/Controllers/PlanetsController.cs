@@ -1,6 +1,7 @@
 ﻿using GalacticViewWebAPI.ActionFilters;
 using GalacticViewWebAPI.Presentation.ModelBinders;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
@@ -21,6 +22,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 
         [HttpGet(Name = "GetPlanets")]
         [HttpHead]
+        [Authorize(Roles ="Administrator")]
         public async Task<IActionResult> GetPlanets()
         {
             var planets = await _service.PlanetService.GetAllPlanetsAsync(trachChanges: false);

@@ -30,7 +30,9 @@ services.ConfigureHttpCacheHeaders();
 services.AddMemoryCache();
 services.ConfigureRateLimitingOptions();
 services.AddHttpContextAccessor();
-
+services.AddAuthentication();
+services.ConfigureIdentity();
+services.ConfigureJWT(builder.Configuration);
 
 services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -82,6 +84,7 @@ app.UseCors("CorsPolicy");
 app.UseResponseCaching();
 app.UseHttpCacheHeaders();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
