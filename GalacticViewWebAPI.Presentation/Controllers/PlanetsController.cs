@@ -22,7 +22,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 
         [HttpGet(Name = "GetPlanets")]
         [HttpHead]
-        [Authorize(Roles ="Administrator")]
+        [Authorize]
         public async Task<IActionResult> GetPlanets()
         {
             var planets = await _service.PlanetService.GetAllPlanetsAsync(trachChanges: false);

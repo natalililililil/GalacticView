@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,11 @@ using Repository;
 namespace GalacticViewWebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20230915075208_AdditionalUserFiledsForRefreshToken")]
+    partial class AdditionalUserFiledsForRefreshToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,14 +223,14 @@ namespace GalacticViewWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "78b13e1e-28cd-461d-98a8-473f75514579",
+                            Id = "ecee464f-5231-4dc2-ae08-9eda78dd28c2",
                             ConcurrencyStamp = "bfbc9816-9778-4249-939f-db5b2ab2cf24",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "8ad908d1-8740-4703-9179-121fac4c2f9a",
+                            Id = "694ea3ab-6730-42b7-8f50-c038fe51f488",
                             ConcurrencyStamp = "68e1656b-a7f8-409e-8fab-781e60fd0c3c",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
