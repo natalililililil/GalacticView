@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using Entities.Exceptions;
 
 namespace Service
 {
@@ -148,6 +149,18 @@ namespace Service
             }
 
             return principal;
+        }
+
+        public async Task<TokenDto> RefreshToken(TokenDto tokenDto)
+        {
+            var principal = GetPrincipalFromExpiredToken(tokenDto.AccessToken);
+
+            var user = await _userManager.FindByNameAsync(principal.Identity.Name);
+            if (user == null || user.RefreshToken != tokenDto.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+                throw new RefreshTokenBadRequest();
+
+            _user = user;
+            return await CreateToken(populateExp: false);
         }
     }
 }
