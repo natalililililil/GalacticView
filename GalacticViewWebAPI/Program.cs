@@ -33,6 +33,8 @@ services.AddHttpContextAccessor();
 services.AddAuthentication();
 services.ConfigureIdentity();
 services.ConfigureJWT(builder.Configuration);
+services.AddJwtConfiguration(builder.Configuration);
+
 
 services.Configure<ApiBehaviorOptions>(options =>
 {

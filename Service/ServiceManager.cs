@@ -5,6 +5,8 @@ using Shared.DataTransferObjects;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Entities.Models;
+using Microsoft.Extensions.Options;
+using Entities.ConfigurationModels;
 
 namespace Service
 {
@@ -15,7 +17,7 @@ namespace Service
         private readonly Lazy<IAuthenticationService> _authenticationService;
 
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper,
-            ISatelliteLinks satelliteLinks, UserManager<User> userManager, IConfiguration configuration)
+            ISatelliteLinks satelliteLinks, UserManager<User> userManager, IOptions<JwtConfiguration> configuration)
         {
             _planetService = new Lazy<IPlanetService>(() => new PlanetService(repositoryManager, logger, mapper));
             _satelliteService = new Lazy<ISatelliteService>(() => new SatelliteService(repositoryManager, logger, mapper, satelliteLinks));
