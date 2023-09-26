@@ -5,6 +5,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 {
     [Route("api/planets")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class PlanetsV2Controller : ControllerBase
     {
         private readonly IServiceManager _service;

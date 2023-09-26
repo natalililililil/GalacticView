@@ -11,6 +11,7 @@ namespace GalacticViewWebAPI.Presentation.Controllers
 {
     [Route("api/planets")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class PlanetsController : ControllerBase
     {
         private readonly IServiceManager _service;
@@ -20,6 +21,10 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             _service = service;
         }
 
+        /// <summary>
+        /// Gets the list of all planets
+        /// </summary>
+        /// <returns>The planets list</returns>
         [HttpGet(Name = "GetPlanets")]
         [HttpHead]
         [Authorize]
@@ -44,7 +49,18 @@ namespace GalacticViewWebAPI.Presentation.Controllers
             return Ok(planets);
         }
 
+        /// <summary>
+        /// Creates a newly created planets
+        /// </summary>
+        /// <param name="planet"></param>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
+        /// <response code="422">If the model is invalid</response>
+        /// <returns></returns>
         [HttpPost(Name = "CreatePlanet")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(422)]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreatePlanet([FromBody] PlanetForCreationDto planet)
         {
