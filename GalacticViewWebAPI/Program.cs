@@ -59,8 +59,8 @@ services.AddControllers(config =>
     config.ReturnHttpNotAcceptable = true;
     config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
     config.CacheProfiles.Add("120SecondsDuration", new CacheProfile{ Duration = 120});
-}).AddXmlDataContractSerializerFormatters()
-.AddCustomCSVFormatter()
+})//.AddXmlDataContractSerializerFormatters()
+//.AddCustomCSVFormatter()
 .AddApplicationPart(typeof(GalacticViewWebAPI.Presentation.AssemblyReference).Assembly);
 services.AddCustomMediaTipe();
 
