@@ -12,8 +12,8 @@ using Repository;
 namespace GalacticViewWebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230907110548_AddedRolesToDb")]
-    partial class AddedRolesToDb
+    [Migration("20231219094301_DatabaseCreation")]
+    partial class DatabaseCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,39 @@ namespace GalacticViewWebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Entities.Models.News", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("NewsId");
+
+                    b.Property<string>("Subtitle")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("TitleImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllNews");
+                });
 
             modelBuilder.Entity("Entities.Models.Planet", b =>
                 {
@@ -137,11 +170,9 @@ namespace GalacticViewWebAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -166,6 +197,12 @@ namespace GalacticViewWebAPI.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -219,15 +256,15 @@ namespace GalacticViewWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "78b13e1e-28cd-461d-98a8-473f75514579",
-                            ConcurrencyStamp = "a56e597b-a715-476a-a902-9a8d2d8d833a",
+                            Id = "43c556cb-5abe-4ec7-95e1-177d86f86d6a",
+                            ConcurrencyStamp = "b998956c-f391-4d47-aa8b-8f2d77f80a27",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "8ad908d1-8740-4703-9179-121fac4c2f9a",
-                            ConcurrencyStamp = "620ff153-82d3-4cf5-97ce-e185e1b55ebb",
+                            Id = "7417693d-02f2-4bbb-b6c0-793e4ec960f3",
+                            ConcurrencyStamp = "e0c60c12-db8d-4305-8953-4d59f9b53224",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

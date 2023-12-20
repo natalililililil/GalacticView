@@ -1,0 +1,20 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Service.Contracts;
+
+namespace GalacticViewWebAPI.Presentation.Controllers
+{
+    [Route("api/all-news")]
+    [ApiController]
+    public class AllNewsController : ControllerBase
+    {
+        private readonly IServiceManager _service;
+        public AllNewsController(IServiceManager service) => _service = service;
+
+        [HttpGet(Name = "GetAllNews")]
+        public async Task<IActionResult> GetAllNews()
+        {
+            var allNews = await _service.NewsService.GetAllNewsAsync(trachChanges: false);
+            return Ok(allNews);
+        }
+    }
+}

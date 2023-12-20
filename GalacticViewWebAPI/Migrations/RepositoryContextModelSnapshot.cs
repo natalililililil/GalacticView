@@ -22,6 +22,50 @@ namespace GalacticViewWebAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Entities.Models.News", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("NewsId");
+
+                    b.Property<string>("Subtitle")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("TitleImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AllNews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("93f37ae5-51d4-412a-871f-47780237aa4f"),
+                            Subtitle = "это подзаголовок",
+                            Text = "Software developer ваыраыоаыи ыраггыак ико кррк уоарк к а",
+                            Title = "Новость1",
+                            TitleImagePath = "путь1",
+                            URL = "/news"
+                        });
+                });
+
             modelBuilder.Entity("Entities.Models.Planet", b =>
                 {
                     b.Property<Guid>("Id")
@@ -220,15 +264,15 @@ namespace GalacticViewWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "78b13e1e-28cd-461d-98a8-473f75514579",
-                            ConcurrencyStamp = "bfbc9816-9778-4249-939f-db5b2ab2cf24",
+                            Id = "37c81399-8a5f-40c0-9fc0-5bd7448c7fa2",
+                            ConcurrencyStamp = "8f7ec1e5-49ba-4eb1-bcad-615ec6451b14",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "8ad908d1-8740-4703-9179-121fac4c2f9a",
-                            ConcurrencyStamp = "68e1656b-a7f8-409e-8fab-781e60fd0c3c",
+                            Id = "d4496d1f-6947-47a7-a12c-98a3485212bd",
+                            ConcurrencyStamp = "55f4a491-5b1c-46ad-a4d0-a1ea144353c3",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

@@ -17,11 +17,13 @@ namespace Repository
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new NewsConfiguration());
             modelBuilder.ApplyConfiguration(new PlanetConfiguration());
             modelBuilder.ApplyConfiguration(new SatelliteConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
         public DbSet<Planet>? Planets { get; set; }
         public DbSet<Satellite>? Satellites { get; set; }
+        public DbSet<News>? AllNews { get; set; }
     }
 }

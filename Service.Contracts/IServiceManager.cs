@@ -11,5 +11,6 @@ namespace Service.Contracts
         IPlanetService PlanetService { get; }
         ISatelliteService SatelliteService { get; }
         IAuthenticationService AuthenticationService { get; }
+        INewsService NewsService { get; }
     }
 }
