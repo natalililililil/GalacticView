@@ -25,7 +25,10 @@ namespace GalacticViewWebAPI
             CreateMap<UserForRegistrationDto, User>();
 
             CreateMap<News, NewsDto>()
-                .ForMember(n => n.NewsContent, opt => opt.MapFrom(x => string.Join(' ', x.Text + x.TitleImagePath)));
+            .ForMember(n => n.NewsContent, opt => opt.MapFrom(x => string.Join(' ', x.Text, " " + x.TitleImagePath)));
+
+            //CreateMap<News, NewsDto>();
+            CreateMap<NewsForCreationDto, News>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace GalacticViewWebAPI.Presentation.Controllers
 {
@@ -15,6 +16,14 @@ namespace GalacticViewWebAPI.Presentation.Controllers
         {
             var allNews = await _service.NewsService.GetAllNewsAsync(trachChanges: false);
             return Ok(allNews);
+        }
+
+        [HttpPost(Name = "CreateNews")]
+        public async Task<IActionResult> CreateNews([FromBody] NewsForCreationDto news)
+        {
+            var createdNews = await _service.NewsService.CreateNewsAsync(news);
+
+            return CreatedAtRoute("CreateNews", new { id = createdNews.Id }, createdNews);
         }
     }
 }

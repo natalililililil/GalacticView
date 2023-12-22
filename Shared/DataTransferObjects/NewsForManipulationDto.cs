@@ -20,6 +20,7 @@ namespace Shared.DataTransferObjects
         [MaxLength(30, ErrorMessage = "Maximum length for the Subtitle is 30 characters.")]
         public string? Subtitle { get; init; }
 
-        public string? NewsСontent { get; init; }
+        public string? Text { get; init; }
+        public string? TitleImagePath { get; init; }
     }
 }
